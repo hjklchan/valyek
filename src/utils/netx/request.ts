@@ -8,10 +8,10 @@ const instance = axios.create();
 // request interceptor
 instance.interceptors.request.use(
     (config: InternalAxiosRequestConfig) => {
+        config.timeout = 2000;
         return config;
     },
     (error: any) => {
-        console.log("request", error)
         Promise.reject(error)
     },
 );
