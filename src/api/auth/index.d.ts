@@ -1,7 +1,7 @@
 
 // sign-in request structure
 export type SignInRequest = {
-    username: string;
+    email: string;
     password: string;
 };
 

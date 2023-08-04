@@ -1,4 +1,5 @@
 import axios, { InternalAxiosRequestConfig, AxiosRequestConfig, AxiosResponse, AxiosError, } from "axios";
+import { configureResponseError } from "./configuration";
 import { ResponseType } from "./index.d";
 
 // create axios instance
@@ -22,12 +23,7 @@ instance.interceptors.response.use(
     },
     (error: AxiosError<ResponseType<any>>) => {
         // Handle server network error
-        if (error.code === AxiosError.ERR_NETWORK) {
-        }
-        // Handle app error
-        if (error.response != undefined) {
-            let { data, status } = error.response;
-        }
+        configureResponseError(error);
         Promise.reject(error);
     }
 );
