@@ -4,5 +4,5 @@ import { SignInRequest, SignInResponse } from "./index.d";
 // signInApi
 // login or sign-in request api
 export const signInApi = async (data: SignInRequest) => {
-    return (await httpPost<SignInResponse>("http://localhost:8080/api/auth/login", data)).data;
+    return (await httpPost<SignInResponse>("http://127.0.0.1:8080/api/auth/login", data)).data;
 };
