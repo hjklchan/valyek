@@ -1,12 +1,14 @@
 import React from "react";
-import { Outlet } from "react-router-dom";
+import { Navigate, Outlet } from "react-router-dom";
 import Header from "./components/Header";
+import Content from "./components/Content";
+import Footer from "./components/Footer";
 
 const AppLayout = () => {
     return <React.Fragment>
         <Header />
-        <div><Outlet /></div>
-        <div>Footer</div>
+        <Content><Outlet /></Content>
+        <Footer />
     </React.Fragment>
 }
 
