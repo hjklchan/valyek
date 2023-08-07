@@ -1,32 +1,37 @@
-import { Box, Flex, IconButton, useColorModeValue, useDisclosure } from "@chakra-ui/react";
-import { CloseIcon, HamburgerIcon } from "@chakra-ui/icons";
+import { Link } from "react-router-dom";
 
 export default function() {
-    const { isOpen, onToggle } = useDisclosure();
-    return <Box>
-        <Flex
-            bg={useColorModeValue('white', 'gray.800')}
-            color={useColorModeValue('gray.600', 'white')}
-            minH={'50px'}
-            py={{ base: 2 }}
-            px={{ base: 4 }}
-            align={"center"}
-        >
-            <Flex
-                flex={{ base: 1, md: "auto" }}
-                ml={{ base: -2 }}
-                display={{ base: "flex", md: 'none' }}
-            >
-                <IconButton
-                    onClick={onToggle}
-                    icon={isOpen ? <CloseIcon w={3} h={3} /> : <HamburgerIcon h={3} w={3} />}
-                    variant={"ghost"}
-                    aria-label={"Toggle Navigation"}
-                />
-            </Flex>
-            <Flex display={{base: "none", md: "flex"}} ml={1}>
-            hello
-            </Flex>
-        </Flex>
-    </Box>
+    const navigations = [
+        { label: "Home", to: "/home" },
+        { label: "Post", to: "/post" },
+        { label: "Share", to: "/share" },
+    ];
+    return <header className="flex items-center justify-start flex-wrap bg-gray-100 px-4 h-8">
+        {/** Text Logo **/}
+        <div className="flex items-center h-full text-gray-800 mr-3">
+            <span className="font-bold text-xxl tracking-tight">Valye0</span>
+        </div>
+        {/** Navigation **/}
+        <nav className="">
+            <div className="max-w-screen-xl px-2 mx-auto">
+                <div className="flex items-center">
+                    <ul className="flex flex-row font-medium mt-0 mr-6 space-x-4 text-sm">
+                        {
+                            navigations.map((item: any) => {
+                                return <li>
+                                    <Link className="block hover:underline" to={item.to}>{item.label}</Link>
+                                </li>
+                            })
+                        }
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
 }
+
+// TODO
+const DesktopNav = (navigations: any) => {
+    return <></>
+}
+

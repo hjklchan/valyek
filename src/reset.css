@@ -1,0 +1,26 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body,
+
+body {
+    font-family: PingFangSC-Regular, PingFang SC, "Microsoft YaHei", "Helvetica Neue", Helvetica,
+        "microsoft yahei", arial, STHeiTi, sans-serif;
+}
+
+a {
+    text-decoration: none;
+}
+
+ul,
+li {
+    list-style: none;
+}
+
+textarea {
+    font-family: inherit;
+}
+

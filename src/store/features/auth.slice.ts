@@ -1,5 +1,6 @@
 import { SignInRequest, SignInResponse } from "@/api/auth";
 import { signInApi } from "@/api/auth/auth";
+import { removeToken, setToken } from "@/utils/tokenx";
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
 export type AuthState = {
@@ -30,14 +31,18 @@ const signIn = createAsyncThunk(
 const authSlice = createSlice({
     name: "auth",
     initialState,
-    reducers: {},
+    reducers: {
+        signOut: (state) => {
+            state.authenticated = false;
+            removeToken();
+        }
+    },
     extraReducers(builder) {
         // sign-in request flow
         builder.addCase(signIn.pending, (state, action) => {
             // set loading status
             state.loading = true;
-            // request start
-        }).addCase(signIn.fulfilled, (state, action) => {
+        }).addCase(signIn.fulfilled, (state, action) => { // request start
             let { userProfile, accessToken } = action.payload;
             // set user profile
             state.username = userProfile.username;
@@ -49,8 +54,9 @@ const authSlice = createSlice({
             state.authenticated = true;
             // set loading status
             state.loading = false;
-            // request successful
-        }).addCase(signIn.rejected, (state, action) => {
+            // set token in localStorage
+            setToken(accessToken);
+        }).addCase(signIn.rejected, (state, action) => { // request successful
             // request failed
             state.loading = false;
         });
