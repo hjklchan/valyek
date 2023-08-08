@@ -1,10 +1,18 @@
+import { useNavigate } from "react-router-dom";
 
 interface Category {
     id: number;
     title: string;
 }
 
+interface Post {
+    id: number;
+    title: string;
+    watch: number;
+}
+
 const Post = () => {
+    const navigate = useNavigate();
     const categories: Category[] = [
         { id: 1, title: "自然" },
         { id: 2, title: "科技" },
@@ -16,6 +24,9 @@ const Post = () => {
     const getPostsByCategory = (id: Category["id"]) => {
         // TODO Invoke API function
         console.log(id);
+    }
+    const gotoPost = (id: number) => {
+        navigate("/post/1");
     }
     const numResults = 99999;
     return <>
@@ -42,12 +53,20 @@ const Post = () => {
                 </span>
             </h1>
             {/** List Component **/}
-            <div className="mt-3">
-                <table className="table-auto">
+            <div className="mt-10">
+                <table className="table-fixed w-full">
+                    <thead>
+                        <tr>
+                            <th className="w-1/2">Title</th>
+                            <th>Author</th>
+                            <th>Update Time</th>
+                        </tr>
+                    </thead>
                     <tbody>
                         <tr>
-                            <td>hello...</td>
-                            <td>hello...</td>
+                            <td><a>hello...</a></td>
+                            <td><a>hello...</a></td>
+                            <td><a>hello...</a></td>
                         </tr>
                     </tbody>
                 </table>
