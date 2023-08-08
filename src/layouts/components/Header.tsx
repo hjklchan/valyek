@@ -6,7 +6,7 @@ interface Menu {
     to: string;
 }
 
-export default function() {
+const Header = () => {
     const navigate = useNavigate();
     const location = useLocation();
     const navigations: Menu[] = [
@@ -23,11 +23,17 @@ export default function() {
             : "text-gray-500";
         return `block ${extraClass} hover:underline`
     }
-    return <header className="flex items-center justify-start flex-wrap bg-gray-100 px-2 h-8">
+    const headerGradientCss = () => {
+        return "bg-gradient-to-b from-gray-100 via-gray-150 to-gray-200"
+    }
+
+    return <header
+        className={`flex items-center flex-wrap bg-gray-100 shadow-md px-2 h-8 ${headerGradientCss()}`}
+    >
         {/** Text Logo **/}
         <div className="flex items-center h-full text-gray-800 mr-3">
             <span
-                className="font-bold text-xxl tracking-tight cursor-pointer"
+                className="font-bold text-xxl tracking-tight cursor-zoom-in"
                 onClick={() => goHome()}
             >
                 Valye0
@@ -59,4 +65,6 @@ export default function() {
 const DesktopNav = (navigations: any) => {
     return <></>
 }
+
+export default Header;
 
