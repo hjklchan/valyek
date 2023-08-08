@@ -33,7 +33,7 @@ const Header = () => {
         {/** Text Logo **/}
         <div className="flex items-center h-full text-gray-800 mr-3">
             <span
-                className="font-bold text-xxl tracking-tight cursor-zoom-in"
+                className="font-bold text-xxl cursor-zoom-in transition duration-700 hover:skew-y-3"
                 onClick={() => goHome()}
             >
                 Valye0
