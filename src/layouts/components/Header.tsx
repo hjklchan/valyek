@@ -9,7 +9,7 @@ interface Menu {
 const Header = () => {
     const navigate = useNavigate();
     const location = useLocation();
-    const navigations: Menu[] = [
+    const menu: Menu[] = [
         { label: "Home", to: "/home" },
         { label: "Post", to: "/post" },
         { label: "Share", to: "/share" },
@@ -17,7 +17,7 @@ const Header = () => {
     const goHome = () => {
         navigate(defaultHomePath);
     }
-    const selectedNavagition = (path: string) => {
+    const selectedMenu = (path: string) => {
         let extraClass = location.pathname == path
             ? "text-gray-800 underline"
             : "text-gray-500";
@@ -45,10 +45,10 @@ const Header = () => {
                 <div className="flex items-center">
                     <ul className="flex flex-row font-medium mt-0 mr-6 space-x-4 text-sm">
                         {
-                            navigations.map((item: Menu) => {
+                            menu.map((item: Menu) => {
                                 return <li key={item.label}>
                                     <Link
-                                        className={selectedNavagition(item.to)}
+                                        className={selectedMenu(item.to)}
                                         to={item.to}
                                     >{item.label}</Link>
                                 </li>
