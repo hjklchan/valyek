@@ -65,10 +65,10 @@ const Header = () => {
         </div>
         <div className="flex w-auto space-x-1">
             <CogIcon
-                className="transition h-4 w-4 text-gray-500 cursor-pointer hover:text-blue-600 duration 150"
+                className="transition h-5 w-5 text-gray-500 cursor-pointer hover:text-blue-600 duration 150"
             />
             <UserIcon
-                className="transition h-4 w-4 text-gray-500 cursor-pointer hover:text-blue-600 duration-150"
+                className="transition h-5 w-5 text-gray-500 cursor-pointer hover:text-blue-600 duration-150"
                 onClick={() => { }}
             />
         </div>
