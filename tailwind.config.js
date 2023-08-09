@@ -7,6 +7,11 @@ export default {
         "./src/**/*.{js,ts,jsx,tsx}",
     ],
     theme: {
+        container: {
+            padding: {
+                default: "1rem"
+            }
+        },
         fontFamily: {
             'mono': ['ui-monospace', 'SFMono-Regular'],
         },

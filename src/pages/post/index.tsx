@@ -20,7 +20,7 @@ const Post = () => {
     const numResults = 99999;
     return <>
         {/** Categories **/}
-        <div className="grid grid-cols-12 gap-x-2 gap-y-1">
+        <div className="grid grid-cols-12 gap-x-2 gap-y-1 hidden">
             {
                 categories.map((item: Category) => (
                     <div key={item.id}>
@@ -34,7 +34,7 @@ const Post = () => {
             }
         </div>
         {/** Post List **/}
-        <div className="mt-5">
+        <div className="mt-5 hidden">
             <h1 className="text-2xl font-semibold leading-none tracking-tight text-gray-900">
                 Posts
                 <span className="ml-3 text-base leading-none tracking-tight text-gray-400">

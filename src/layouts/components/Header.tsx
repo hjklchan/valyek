@@ -1,5 +1,6 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { defaultHomePath } from "@/routes"
+import { UserIcon, CogIcon } from "@heroicons/react/24/solid";
 
 interface Menu {
     label: string;
@@ -14,6 +15,9 @@ const Header = () => {
         { label: "Post", to: "/post" },
         { label: "Share", to: "/share" },
     ];
+    const headerGradientCss = () => {
+        return "bg-gradient-to-b from-gray-100 via-gray-150 to-gray-200"
+    }
     const goHome = () => {
         navigate(defaultHomePath);
     }
@@ -23,41 +27,51 @@ const Header = () => {
             : "text-gray-500";
         return `block ${extraClass} hover:underline`
     }
-    const headerGradientCss = () => {
-        return "bg-gradient-to-b from-gray-100 via-gray-150 to-gray-200"
-    }
+    // const 
 
     return <header
-        className={`flex items-center flex-wrap bg-gray-100 shadow-md px-2 h-8 ${headerGradientCss()}`}
+        className={`max-w-screen flex justify-between items-center bg-gray-100 shadow-md px-2 h-8 ${headerGradientCss()}`}
     >
         {/** Text Logo **/}
         <div className="flex items-center h-full text-gray-800 mr-3">
-            <span
-                className="font-bold text-xxl cursor-zoom-in transition duration-700 hover:skew-y-3"
-                onClick={() => goHome()}
-            >
-                Valye0
-            </span>
-        </div>
-        {/** Navigation **/}
-        <nav className="">
-            <div className="max-w-screen-xl px-2 mx-auto">
-                <div className="flex items-center">
-                    <ul className="flex flex-row font-medium mt-0 mr-6 space-x-4 text-sm">
-                        {
-                            menu.map((item: Menu) => {
-                                return <li key={item.label}>
-                                    <Link
-                                        className={selectedMenu(item.to)}
-                                        to={item.to}
-                                    >{item.label}</Link>
-                                </li>
-                            })
-                        }
-                    </ul>
-                </div>
+            <div>
+                <span
+                    className="transition font-bold text-xxl cursor-zoom-in duration-700 hover:skew-y-3"
+                    onClick={() => goHome()}
+                >
+                    Valye98
+                </span>
+
             </div>
-        </nav>
+            {/** Navigation **/}
+            <nav className="ml-2">
+                <div className="px-2 mx-auto">
+                    <div className="flex items-center">
+                        <ul className="flex flex-row font-medium mt-0 mr-6 space-x-4 text-sm">
+                            {
+                                menu.map((item: Menu) => {
+                                    return <li key={item.label}>
+                                        <Link
+                                            className={selectedMenu(item.to)}
+                                            to={item.to}
+                                        >{item.label}</Link>
+                                    </li>
+                                })
+                            }
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+        <div className="flex w-auto space-x-1">
+            <CogIcon
+                className="transition h-4 w-4 text-gray-500 cursor-pointer hover:text-blue-600 duration 150"
+            />
+            <UserIcon
+                className="transition h-4 w-4 text-gray-500 cursor-pointer hover:text-blue-600 duration-150"
+                onClick={() => { }}
+            />
+        </div>
     </header>
 }
 

@@ -3,14 +3,8 @@ import React, { useState } from "react";
 // Content
 const Content = ({ children }: { children: React.ReactNode }) => {
     const [timer, setTimer] = useState()
-    return <main className="container w-screen px-4 mt-4 mb-8">
-        {/** weather and datetime **/}
-        <div className="flex space-x-4">
-            <span className="">2023-08-08 14:24</span>
-            <span className="">☀ 20℃~35℃</span>
-            <span className="">下午好</span>
-        </div>
-        <div className="my-6">
+    return <main className="container mx-auto px-2 mt-4 mb-8" role="main" style={{minHeight: "100%"}}>
+        <div className="my-2">
             {children}
         </div>
     </main>
