@@ -16,7 +16,7 @@ export default function() {
     ];
     const isLock = true;
     return <>
-        <div className="grid grid-cols-3 gap-4">
+        <div className="grid grid-cols-4 gap-0">
             <div className="border">
                 <h2 className="bg-gray-100 p-1 text-sm">热门文章</h2>
                 <table className="w-full">
@@ -25,7 +25,7 @@ export default function() {
                             fakePosts.length > 0
                                 ? fakePosts.map(item => {
                                     return <tr className="" key={item.id}>
-                                        <td className="w-3/4 px-1 text-sm">
+                                        <td className="w-3/4 px-1 text-sm hover:bg-gray-100">
                                             <a className="cursor-pointer" onClick={() => { }}>
                                                 <b className="mr-1">[{item.category}]</b>
                                             </a>
@@ -65,6 +65,20 @@ export default function() {
                         </tr>
                     </tbody>
                 </table>
+            </div>
+            <div>
+                <h2 className="bg-gray-100 p-1 text-sm">锁定组件</h2>
+                <table className="w-full">
+                    <tbody>
+                        <tr className="">
+                            <td className="w-3/4 px-1 text-sm">
+                                <b className="mr-1">[PHP]</b>...
+                            </td>
+                            <td className="text-right text-xs">{">>"}</td>
+                        </tr>
+                    </tbody>
+                </table>
+
             </div>
         </div>
     </>

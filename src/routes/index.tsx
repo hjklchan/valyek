@@ -1,11 +1,12 @@
 import React from "react";
-import { createBrowserRouter, createRoutesFromElements, Navigate, Route } from "react-router-dom";
+import { createBrowserRouter, createRoutesFromElements, Navigate, Route, useRoutes } from "react-router-dom";
 import RequireAuth from "@/components/RequireAuth";
 import { Login, Registration, User, Home } from "@/pages";
 import { AppLayout } from "@/layouts/AppLayout";
 import Post from "@/pages/post";
 import Share from "@/pages/share";
 
+// Default home path
 export const defaultHomePath = "/home";
 
 /**
@@ -35,3 +36,4 @@ export const appRouter = createBrowserRouter(
         </React.Fragment>
     )
 )
+
