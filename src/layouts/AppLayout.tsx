@@ -1,16 +1,41 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { MegaphoneIcon } from "@heroicons/react/20/solid";
 import { Navigate, Outlet } from "react-router-dom";
 import Header from "./components/Header";
 import Content from "./components/Content";
 import Footer from "./components/Footer";
+import moment from "moment";
 
 const AppLayout = () => {
+    const [timePeriod, setTimePeriod] = useState<string>("")
+    const initialTimePeriod = () => {
+        // TODO This initial action need to be wrapped separately
+        moment.updateLocale("zh-cn", {
+            meridiem: function(hour, minute, isLowercase) {
+                if (hour < 9) {
+                    return "早上";
+                } else if (hour < 11) {
+                    return "上午";
+                } else if (hour < 13) {
+                    return "中午";
+                } else if (hour < 18) {
+                    return "下午";
+                } else {
+                    return "晚上";
+                }
+            }
+        })
+        const r = moment().format("A");
+        setTimePeriod(r);
+    }
+    useEffect(() => {
+        initialTimePeriod();
+    }, []);
     return <React.Fragment>
         <Header />
         <div className="flex justify-between px-2 mt-2 flex text-xs">
             <div className="flex">
-                <div className="lg:text-md mr-3">下午</div>
+                <div className="lg:text-md mr-3">{timePeriod}</div>
                 <div className="lg:text-md mr-1">☀</div>
                 <div className="lg:text-md">
                     <span className="text-green-600">29℃</span>
