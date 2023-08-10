@@ -14,10 +14,24 @@ export default function() {
         // { id: 10, category: "Go", title: "找出指定100个50位数之和的前十位数字" },
         // { id: 11, category: "Go", title: "找出指定100个50位数之和的前十位数字" },
     ];
+    const renderPostList = () => {
+        // Loop <td> tags
+        if (fakePosts.length <= 0) {
+            return <>No records</>
+        } else {
+            return <>
+                {
+                    fakePosts.map(item => {
+                        <td key={item.id}>{item.title}</td>
+                    })
+                }
+            </>
+        }
+    }
     const isLock = true;
-    return <>
-        <div className="grid grid-cols-4 gap-0">
-            <div className="border">
+    return <div className="space-y-3">
+        <div className="grid grid-cols-4 gap-0 border-2">
+            <div className="">
                 <h2 className="bg-gray-100 p-1 text-sm">热门文章</h2>
                 <table className="w-full">
                     <tbody>
@@ -40,7 +54,7 @@ export default function() {
                     </tbody>
                 </table>
             </div>
-            <div className="border">
+            <div className="">
                 <h2 className="bg-gray-100 p-1 text-sm">热门分享</h2>
                 <table className="w-full">
                     <tbody>
@@ -53,7 +67,7 @@ export default function() {
                     </tbody>
                 </table>
             </div>
-            <div className="border">
+            <div className="">
                 <h2 className="bg-gray-100 p-1 text-sm">锁定组件</h2>
                 <table className="w-full">
                     <tbody>
@@ -78,8 +92,8 @@ export default function() {
                         </tr>
                     </tbody>
                 </table>
-
             </div>
         </div>
-    </>
+        <h2>New section</h2>
+    </div>
 }

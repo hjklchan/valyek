@@ -1,7 +1,7 @@
 import React from "react";
 import { createBrowserRouter, createRoutesFromElements, Navigate, Route, useRoutes } from "react-router-dom";
 import RequireAuth from "@/components/RequireAuth";
-import { Login, Registration, User, Home } from "@/pages";
+import { Login, Registration, User, Home, NotFound } from "@/pages";
 import { AppLayout } from "@/layouts/AppLayout";
 import Post from "@/pages/post";
 import Share from "@/pages/share";
@@ -30,6 +30,7 @@ export const appRouter = createBrowserRouter(
                 <Route path="/share" element={<Share />} />
                 {/* Profile page */}
                 <Route path="/user" element={<RequireAuth><User /></RequireAuth>} />
+                <Route path="/*" element={<NotFound />} />
             </Route>
             {/* Not found page */}
             <Route path="/*" element={<>Page Not Found</>} />

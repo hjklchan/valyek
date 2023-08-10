@@ -43,10 +43,10 @@ const AppLayout = () => {
                     <span className="text-orange-600">35℃</span>
                 </div>
             </div>
-            <div className="flex items-center">
+            {/**<div className="flex items-center">
                 <MegaphoneIcon className="h-3 w-3" />
                 <span className="ml-2">这是会滚动的公告</span>
-            </div>
+            </div>**/}
             <div></div>
         </div>
         <Content><Outlet /></Content>
