@@ -1,5 +1,4 @@
-import { LockClosedIcon } from "@heroicons/react/24/solid";
-import { argv0 } from "process";
+import { EyeIcon } from "@heroicons/react/24/solid";
 
 export default function() {
     const fakePosts: { id: number, category: string, title: string }[] = [
@@ -11,8 +10,8 @@ export default function() {
         { id: 7, category: "Go", title: "找出指定100个50位数之和的前十位数字" },
         { id: 8, category: "Go", title: "找出指定100个50位数之和的前十位数字" },
         { id: 9, category: "Go", title: "找出指定100个50位数之和的前十位数字" },
-        // { id: 10, category: "Go", title: "找出指定100个50位数之和的前十位数字" },
-        // { id: 11, category: "Go", title: "找出指定100个50位数之和的前十位数字" },
+        { id: 10, category: "Go", title: "找出指定100个50位数之和的前十位数字" },
+        { id: 11, category: "Go", title: "找出指定100个50位数之和的前十位数字" },
     ];
     const renderPostList = () => {
         // Loop <td> tags
@@ -32,7 +31,7 @@ export default function() {
     return <div className="space-y-3">
         <div className="grid grid-cols-4 gap-0 border-2">
             <div className="">
-                <h2 className="bg-gray-100 p-1 text-sm">热门文章</h2>
+                <h2 className="bg-gray-200 p-1 text-sm">热门文章 Top 10</h2>
                 <table className="w-full">
                     <tbody>
                         {
@@ -55,7 +54,7 @@ export default function() {
                 </table>
             </div>
             <div className="">
-                <h2 className="bg-gray-100 p-1 text-sm">热门分享</h2>
+                <h2 className="bg-gray-200 p-1 text-sm">热门分享</h2>
                 <table className="w-full">
                     <tbody>
                         <tr className="">
@@ -68,7 +67,7 @@ export default function() {
                 </table>
             </div>
             <div className="">
-                <h2 className="bg-gray-100 p-1 text-sm">锁定组件</h2>
+                <h2 className="bg-gray-200 p-1 text-sm">锁定组件</h2>
                 <table className="w-full">
                     <tbody>
                         <tr className="">
@@ -81,7 +80,7 @@ export default function() {
                 </table>
             </div>
             <div>
-                <h2 className="bg-gray-100 p-1 text-sm">锁定组件</h2>
+                <h2 className="bg-gray-500 p-1 text-gray-300 text-sm">提交记录</h2>
                 <table className="w-full">
                     <tbody>
                         <tr className="">
@@ -94,6 +93,23 @@ export default function() {
                 </table>
             </div>
         </div>
-        <h2>New section</h2>
+        <div className="border">
+            <h2 className="p-1 text-sm bg-gray-200">综合区块</h2>
+            <table className="table-fixed w-full">
+                <tbody>
+                    <tr className="h-18">
+                        <td className="px-2">
+                            <span className="font-semibold text-blue-800 hover:underline cursor-pointer">{`< 前端 >`}</span><br />
+                            <span className="text-md hover:underline cursor-pointer">美团前端研发框架Rome实践和演进趋势</span><br />
+                            <span className="text-sm">作者: valyek, illusion</span>
+                        </td>
+                        <td className="w-1/5">
+                            <div className="text-sm">2023-03-23</div>
+                            <div className="flex items-center space-x-4 text-sm"><EyeIcon className="h-3 w-3 mr-1 text-gray-500" />233333</div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
 }
