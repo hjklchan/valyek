@@ -94,6 +94,10 @@ export default function() {
             </div>
         </div>
         <div className="border">
+            <h2 className="p-1 text-sm bg-gray-200">Photos</h2>
+            <div className="p-1 text-sm">Put photos here....</div>
+        </div>
+        <div className="border">
             <h2 className="p-1 text-sm bg-gray-200">综合区块</h2>
             <table className="table-fixed w-full">
                 <tbody className="">
