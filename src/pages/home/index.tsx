@@ -96,14 +96,14 @@ export default function() {
         <div className="border">
             <h2 className="p-1 text-sm bg-gray-200">综合区块</h2>
             <table className="table-fixed w-full">
-                <tbody>
+                <tbody className="">
                     <tr className="h-18">
                         <td className="px-2">
                             <span className="font-semibold text-blue-800 hover:underline cursor-pointer">{`< 前端 >`}</span><br />
                             <span className="text-md hover:underline cursor-pointer">美团前端研发框架Rome实践和演进趋势</span><br />
                             <span className="text-sm">作者: valyek, illusion</span>
                         </td>
-                        <td className="w-1/5">
+                        <td className="w-1/6">
                             <div className="text-sm">2023-03-23</div>
                             <div className="flex items-center space-x-4 text-sm"><EyeIcon className="h-3 w-3 mr-1 text-gray-500" />233333</div>
                         </td>
