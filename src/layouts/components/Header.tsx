@@ -36,7 +36,7 @@ const Header = () => {
         <div className="flex items-center h-full text-gray-800 mr-3">
             <div>
                 <span
-                    className="transition font-bold text-xxl cursor-zoom-in duration-700 hover:skew-y-3"
+                    className="text-xxl font-bold text-bold text-gray-700"
                     onClick={() => goHome()}
                 >
                     Valye98

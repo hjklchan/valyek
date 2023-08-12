@@ -93,7 +93,7 @@ export default function() {
                 </table>
             </div>
         </div>
-        <div className="border">
+        <div className="border-2">
             <h2 className="p-1 text-sm bg-gray-200">Photos</h2>
             <div className="p-1 text-sm">Put photos here....</div>
         </div>
