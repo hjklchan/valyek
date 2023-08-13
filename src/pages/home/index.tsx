@@ -99,19 +99,97 @@ export default function() {
         </div>
         <div className="border">
             <h2 className="p-1 text-sm bg-gray-200">综合区块</h2>
-            <table className="table-fixed w-full">
+            <table className="table-fixed w-full border-separate border-spacing-y-4">
                 <tbody className="">
                     <tr className="h-18">
                         <td className="px-2">
-                            <span className="font-semibold text-blue-800 hover:underline cursor-pointer">{`< 前端 >`}</span><br />
-                            <span className="text-md hover:underline cursor-pointer">美团前端研发框架Rome实践和演进趋势</span><br />
-                            <span className="text-sm">作者: valyek, illusion</span>
+                            <div className="items-center">
+                                <span className="font-semibold text-blue-800 hover:underline cursor-pointer">{`< 软件区 >`}</span>
+                                <span className="ml-2 text-sm text-gray-600">维护作者: valyek, illusion</span>
+                            </div>
+                            <div className="py-0">
+                                <ul className="text-md">
+                                    {
+                                        fakePosts.map(item => {
+                                            return <li key={item.id}>
+                                                <a className="cursor-pointer hover:underline">美团前端研发框架Rome实践和演进趋势</a>
+                                            </li>
+                                        })
+                                    }
+
+                                </ul>
+                            </div>
                         </td>
                         <td className="w-1/6">
-                            <div className="text-sm">2023-03-23</div>
-                            <div className="flex items-center space-x-4 text-sm"><EyeIcon className="h-3 w-3 mr-1 text-gray-500" />233333</div>
                         </td>
                     </tr>
+                    <tr className="h-18">
+                        <td className="px-2">
+                            <div className="items-center">
+                                <span className="font-semibold text-blue-800 hover:underline cursor-pointer">{`< 编程区 >`}</span>
+                                <span className="ml-2 text-sm text-gray-600">维护作者: valyek, illusion</span>
+                            </div>
+                            <div className="py-0">
+                                <ul className="text-md">
+                                    {
+                                        fakePosts.map(item => {
+                                            return <li key={item.id}>
+                                                <a className="cursor-pointer hover:underline">美团前端研发框架Rome实践和演进趋势</a>
+                                            </li>
+                                        })
+                                    }
+
+                                </ul>
+                            </div>
+                        </td>
+                        <td className="w-1/6">
+                        </td>
+                    </tr>
+                    <tr className="h-18">
+                        <td className="px-2">
+                            <div className="items-center">
+                                <span className="font-semibold text-blue-800 hover:underline cursor-pointer">{`< 软件调试区 >`}</span>
+                                <span className="ml-2 text-sm text-gray-600">维护作者: valyek, illusion</span>
+                            </div>
+                            <div className="py-0">
+                                <ul className="text-md">
+                                    {
+                                        fakePosts.map(item => {
+                                            return <li key={item.id}>
+                                                <a className="cursor-pointer hover:underline">美团前端研发框架Rome实践和演进趋势</a>
+                                            </li>
+                                        })
+                                    }
+
+                                </ul>
+                            </div>
+                        </td>
+                        <td className="w-1/6">
+                        </td>
+                    </tr>
+                    <tr className="h-18">
+                        <td className="px-2">
+                            <div className="items-center">
+                                <span className="font-semibold text-blue-800 hover:underline cursor-pointer">{`< 病毒分析 >`}</span>
+                                <span className="ml-2 text-sm text-gray-600">维护作者: valyek, illusion</span>
+                            </div>
+                            <div className="py-0">
+                                <ul className="text-md">
+                                    {
+                                        fakePosts.map(item => {
+                                            return <li key={item.id}>
+                                                <a className="cursor-pointer hover:underline">美团前端研发框架Rome实践和演进趋势</a>
+                                            </li>
+                                        })
+                                    }
+
+                                </ul>
+                            </div>
+                        </td>
+                        <td className="w-1/6">
+                        </td>
+                    </tr>
+
                 </tbody>
             </table>
         </div>
