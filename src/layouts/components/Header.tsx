@@ -36,7 +36,7 @@ const Header = () => {
         <div className="flex items-center h-full text-gray-800 mr-3">
             <div>
                 <span
-                    className="text-xxl font-bold text-bold text-gray-700"
+                    className="text-xxl font-bold cursor-pointer text-bold text-gray-700"
                     onClick={() => goHome()}
                 >Valye98</span>
             </div>
