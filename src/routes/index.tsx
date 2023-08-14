@@ -5,6 +5,7 @@ import { Login, Registration, User, Home, NotFound } from "@/pages";
 import { AppLayout } from "@/layouts/AppLayout";
 import Post from "@/pages/post";
 import Share from "@/pages/share";
+import PostDetail from "@/pages/post/detail";
 
 // Default home path
 export const defaultHomePath = "/home";
@@ -27,6 +28,7 @@ export const appRouter = createBrowserRouter(
             <Route element={<AppLayout />}>
                 <Route path={defaultHomePath} element={<Home />} />
                 <Route path="/post" element={<Post />} />
+                <Route path="/post/:postId" element={<PostDetail />}/>
                 <Route path="/share" element={<Share />} />
                 {/* Profile page */}
                 <Route path="/user" element={<RequireAuth><User /></RequireAuth>} />

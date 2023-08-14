@@ -24,7 +24,8 @@ export default {
                 'h2': { fontSize: theme('fontSize.xl') },
                 'h3': { fontSize: theme('fontSize.lg') },
             })
-        })
+        }),
+        require("@tailwindcss/typography"),
     ],
 }
 

@@ -89,7 +89,7 @@ export default function() {
             <h2 className="p-1 text-sm bg-gray-200">综合区块</h2>
             <table className="table-fixed w-full border-separate border-spacing-y-2">
                 <tbody className="">
-                    <tr className="h-18">
+                    <tr className="h-18 hover:bg-gray-100">
                         <td className="px-2 space-y-1">
                             <div className="items-center">
                                 <span className="font-semibold text-blue-800 hover:underline cursor-pointer">{`< 软件区 >`}</span>
@@ -108,7 +108,7 @@ export default function() {
                             <span className="text-xs">2023-12-30 <a className="cursor-pointer hover:underline">authorName</a></span>
                         </td>
                     </tr>
-                    <tr className="h-18">
+                    <tr className="h-18 hover:bg-gray-100">
                         <td className="px-2 space-y-1">
                             <div className="items-center">
                                 <span className="font-semibold text-blue-800 hover:underline cursor-pointer">{`< 编程区 >`}</span>
@@ -127,7 +127,7 @@ export default function() {
                             <span className="text-xs">2023-12-30 <a className="cursor-pointer hover:underline">authorName</a></span>
                         </td>
                     </tr>
-                    <tr className="h-18">
+                    <tr className="h-18 hover:bg-gray-100">
                         <td className="px-2 space-y-1">
                             <div className="items-center">
                                 <span className="font-semibold text-blue-800 hover:underline cursor-pointer">{`< 福利区 >`}</span>
@@ -146,7 +146,7 @@ export default function() {
                             <span className="text-xs">2023-12-30 <a className="cursor-pointer hover:underline">authorName</a></span>
                         </td>
                     </tr>
-                    <tr className="h-18">
+                    <tr className="h-18 hover:bg-gray-100">
                         <td className="px-2 space-y-1">
                             <div className="items-center">
                                 <span className="font-semibold text-blue-800 hover:underline cursor-pointer">{`< 原创区 >`}</span>
