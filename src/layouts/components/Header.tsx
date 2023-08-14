@@ -38,10 +38,7 @@ const Header = () => {
                 <span
                     className="text-xxl font-bold text-bold text-gray-700"
                     onClick={() => goHome()}
-                >
-                    Valye98
-                </span>
-
+                >Valye98</span>
             </div>
             {/** Navigation **/}
             <nav className="ml-2">
