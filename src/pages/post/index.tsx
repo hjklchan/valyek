@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
-import { Button } from "@chakra-ui/react"
+import { Button, Link } from "@chakra-ui/react"
 import { ArrowLeftIcon, ArrowRightIcon } from "@heroicons/react/20/solid";
 
 interface Category {
@@ -51,33 +51,33 @@ const Post = () => {
             <ul className="grid grid-flow-col auto-cols-max gap-2 mt-3">
                 <li className="border-2 text-xs p-1 hover:bg-gray-200">全部</li>
                 <li className="border-2 text-xs p-1 hover:bg-gray-200">
-                    原创工具<em className="text-red-600">&nbsp;(11012)</em>
+                    ◾ 原创工具<em className="text-red-600">&nbsp;(11012)</em>
                 </li>
                 <li className="border-2 text-xs p-1 hover:bg-gray-200">
-                    原创汉化<em className="text-red-600">&nbsp;(1)</em>
+                    ◾ 原创汉化<em className="text-red-600">&nbsp;(1)</em>
                 </li>
                 <li className="border-2 text-xs p-1 hover:bg-gray-200">
-                    Android工具<em className="text-red-600">&nbsp;(112)</em>
+                    ◾ Android工具<em className="text-red-600">&nbsp;(112)</em>
                 </li>
                 <li className="border-2 text-xs p-1 hover:bg-gray-200">
-                    Android汉化<em className="text-red-600">&nbsp;(999)</em>
+                    ◾ Android汉化<em className="text-red-600">&nbsp;(999)</em>
                 </li>
             </ul>
             {/** List Component **/}
             <div className="mt-2">
-                <div className="bg-gray-100 p-1 space-x-1 text-xs">
+                <div className="bg-gray-100 p-1 space-x-1 text-xs mb-1">
                     <span className="">最新</span>
                     <span className="">热门</span>
                     <span className="">精华</span>
                 </div>
                 {
                     true
-                        ? <table className="table-fixed w-full border-separate">
+                        ? <table className="table-fixed w-full border-none">
                             <tbody>
                                 <tr className="hover:bg-gray-100 h-10">
                                     <td>
                                         <span className="mr-2 text-md">[原创工具]</span>
-                                        <span className="text-sm">ahahahahahahahhhh...</span>
+                                        <Link className="text-sm">ahahahahahahahhhh...</Link>
                                     </td>
                                     <td className="w-1/12 text-sm">🔥1K</td>
                                     <td className="w-1/12 text-xs">
@@ -88,7 +88,7 @@ const Post = () => {
                                 <tr className="hover:bg-gray-100">
                                     <td>
                                         <span className="mr-2 text-md">[原创工具]</span>
-                                        <span className="text-sm">ahahahahahahahhhh...</span>
+                                        <Link className="text-sm">ahahahahahahahhhh...</Link>
                                     </td>
                                     <td className="w-1/12 text-sm">🔥549</td>
                                     <td className="w-1/12 text-xs">
