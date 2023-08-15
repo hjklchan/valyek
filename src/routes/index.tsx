@@ -1,10 +1,8 @@
 import React from "react";
 import { createBrowserRouter, createRoutesFromElements, Navigate, Route, useRoutes } from "react-router-dom";
 import RequireAuth from "@/components/RequireAuth";
-import { Login, Registration, User, Blog, Block, NotFound } from "@/pages";
+import { Login, Registration, User, Blog, Block, PostDetail, Share, NotFound } from "@/pages";
 import { AppLayout } from "@/layouts/AppLayout";
-import Share from "@/pages/share";
-import PostDetail from "@/pages/block/detail";
 
 // Default home path
 export const defaultHomePath = "/blog";

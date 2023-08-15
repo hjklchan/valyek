@@ -5,5 +5,6 @@ import Blog from "./blog";
 import User from "./user";
 import Block from "./block";
 import Share from "./share";
+import PostDetail from "@/pages/post/detail";
 
-export { NotFound, Login, Registration, User, Blog, Block, Share };
+export { NotFound, Login, Registration, User, Blog, Block, PostDetail, Share };
