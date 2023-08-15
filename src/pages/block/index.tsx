@@ -1,8 +1,7 @@
 import { useEffect } from "react";
-import { useLocation } from "react-router-dom";
-import { Button, Link } from "@chakra-ui/react"
-import { ArrowLeftIcon, ArrowRightIcon } from "@heroicons/react/20/solid";
-import { argv0, title } from "process";
+import { useLocation, Link } from "react-router-dom";
+import { Button } from "@chakra-ui/react"
+import { ArrowLeftIcon, ArrowRightIcon, PlusIcon } from "@heroicons/react/20/solid";
 
 interface Category {
     id: number;
@@ -61,6 +60,7 @@ const Block = () => {
                     size="sm"
                     onClick={() => createPost()}
                 >
+                    <PlusIcon className="h-4 w-4" />&nbsp;
                     <span className="text-gray-600">发帖</span>
                 </Button>
                 <div className="space-x-2">
@@ -102,19 +102,19 @@ const Block = () => {
                             <tbody>
                                 <tr className="hover:bg-gray-100 h-12">
                                     <td>
-                                        <Link className="mr-2 text-md">[原创工具]</Link>
-                                        <Link className="text-sm">ahahahahahahahhhh...</Link>
+                                        <Link to="/" className="mr-2 text-md">[原创工具]</Link>
+                                        <Link to="/post/1" className="text-sm">ahahahahahahahhhh...</Link>
                                     </td>
                                     <td className="w-1/12 text-sm">🔥1K</td>
                                     <td className="w-1/12 text-xs">
-                                        <Link>illusion</Link><br />
+                                        <Link to="">illusion</Link><br />
                                         <span className="text-gray-600">2023-04-07</span>
                                     </td>
                                 </tr>
                                 <tr className="hover:bg-gray-100">
                                     <td>
                                         <span className="mr-2 text-md">[原创工具]</span>
-                                        <Link className="text-sm">ahahahahahahahhhh...</Link>
+                                        <Link to="" className="text-sm">ahahahahahahahhhh...</Link>
                                     </td>
                                     <td className="w-1/12 text-sm">🔥549</td>
                                     <td className="w-1/12 text-xs">
