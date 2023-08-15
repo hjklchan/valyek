@@ -2,14 +2,38 @@ import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { Button, Link } from "@chakra-ui/react"
 import { ArrowLeftIcon, ArrowRightIcon } from "@heroicons/react/20/solid";
+import { argv0, title } from "process";
 
 interface Category {
     id: number;
     title: string;
+    numPost: number;
 }
 
 const Post = () => {
     const location = useLocation();
+    const fakeCategories: Category[] = [
+        {
+            id: 1,
+            title: "原创工具",
+            numPost: 11021,
+        },
+        {
+            id: 2,
+            title: "原创汉化",
+            numPost: 1
+        },
+        {
+            id: 3,
+            title: "Android 工具",
+            numPost: 113,
+        },
+        {
+            id: 4,
+            title: "Android 汉化",
+            numPost: 999,
+        },
+    ];
     const getPostsByCategory = (id: Category["id"]) => {
         // TODO Invoke API function
         console.log(id);
@@ -48,20 +72,50 @@ const Post = () => {
                     </Button>
                 </div>
             </div>
-            <ul className="grid grid-flow-col auto-cols-max gap-2 mt-3">
-                <li className="border-2 text-xs p-1 hover:bg-gray-200">全部</li>
-                <li className="border-2 text-xs p-1 hover:bg-gray-200">
+            <ul className="flex flex-wrap  gap-2 mt-3 text-xs">
+                <li className="border-2 p-1 hover:bg-gray-200">全部</li>
+                {
+                    fakeCategories.length > 0
+                        ? fakeCategories.map(item => {
+                            return <li
+                                className="border-2 p-1 hover:bg-gray-200 hover:cursor-pointer"
+                                key={item.id}
+                            >
+                                ◾ {item.title}<em className="text-red-600">&nbsp;({item.numPost})</em>
+                            </li>
+                        })
+                        : <></>
+                }
+                <li className="border-2 p-1 hover:bg-gray-200 hover:cursor-pointer">
                     ◾ 原创工具<em className="text-red-600">&nbsp;(11012)</em>
                 </li>
-                <li className="border-2 text-xs p-1 hover:bg-gray-200">
+                <li className="border-2 p-1 hover:bg-gray-200 hover:cursor-pointer">
                     ◾ 原创汉化<em className="text-red-600">&nbsp;(1)</em>
                 </li>
-                <li className="border-2 text-xs p-1 hover:bg-gray-200">
+                <li className="border-2 p-1 hover:bg-gray-200 hover:cursor-pointer">
                     ◾ Android工具<em className="text-red-600">&nbsp;(112)</em>
                 </li>
-                <li className="border-2 text-xs p-1 hover:bg-gray-200">
+                <li className="border-2 p-1 hover:bg-gray-200 hover:cursor-pointer">
+                    ◾ Android汉化<em className="text-red-600">&nbsp;(999)</em>
+                </li><li className="border-2 p-1 hover:bg-gray-200 hover:cursor-pointer">
+                    ◾ Android汉化<em className="text-red-600">&nbsp;(999)</em>
+                </li><li className="border-2 p-1 hover:bg-gray-200 hover:cursor-pointer">
+                    ◾ Android汉化<em className="text-red-600">&nbsp;(999)</em>
+                </li><li className="border-2 p-1 hover:bg-gray-200 hover:cursor-pointer">
+                    ◾ Android汉化<em className="text-red-600">&nbsp;(999)</em>
+                </li><li className="border-2 p-1 hover:bg-gray-200 hover:cursor-pointer">
+                    ◾ Android汉化<em className="text-red-600">&nbsp;(999)</em>
+                </li><li className="border-2 p-1 hover:bg-gray-200 hover:cursor-pointer">
+                    ◾ Android汉化<em className="text-red-600">&nbsp;(999)</em>
+                </li><li className="border-2 p-1 hover:bg-gray-200 hover:cursor-pointer">
                     ◾ Android汉化<em className="text-red-600">&nbsp;(999)</em>
                 </li>
+
+
+
+
+
+
             </ul>
             {/** List Component **/}
             <div className="mt-2">
