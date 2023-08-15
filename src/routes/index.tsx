@@ -3,9 +3,8 @@ import { createBrowserRouter, createRoutesFromElements, Navigate, Route, useRout
 import RequireAuth from "@/components/RequireAuth";
 import { Login, Registration, User, Blog, Block, NotFound } from "@/pages";
 import { AppLayout } from "@/layouts/AppLayout";
-import Post from "@/pages/post";
 import Share from "@/pages/share";
-import PostDetail from "@/pages/post/detail";
+import PostDetail from "@/pages/block/detail";
 
 // Default home path
 export const defaultHomePath = "/blog";
