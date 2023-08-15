@@ -90,6 +90,7 @@ const Post = () => {
             </ul>
             {/** List Component **/}
             <div className="mt-2">
+                {/** Show Menu **/}
                 <div className="bg-gray-100 p-1 space-x-2 text-xs mb-1">
                     <span className="cursor-pointer">最新</span>
                     <span className="cursor-pointer">热门</span>
@@ -97,7 +98,7 @@ const Post = () => {
                 </div>
                 {
                     true
-                        ? <table className="table-fixed w-full border-none">
+                        ? <table className="table-fixed w-full border-none">{/** List **/}
                             <tbody>
                                 <tr className="hover:bg-gray-100 h-12">
                                     <td>
@@ -124,7 +125,7 @@ const Post = () => {
                                 </tr>
                             </tbody>
                         </table>
-                        : <div className="flex justify-center my-2">
+                        : <div className="flex justify-center my-2">{/** Empty Text **/}
                             <span className="text-sm">No record</span>
                         </div>
                 }
