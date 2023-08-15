@@ -63,12 +63,13 @@ const Post = () => {
                 >
                     <span className="text-gray-600">发帖</span>
                 </Button>
-                <div className="space-x-1">
+                <div className="space-x-2">
+                    <span className="text-sm font-bold">1 / 5</span>
                     <Button size="sm" variant="outline" >
-                        <ArrowLeftIcon className="h-3 w-3" />
+                        <ArrowLeftIcon className="font-bold h-3 w-3" />
                     </Button>
                     <Button size="sm" variant="outline">
-                        <ArrowRightIcon className="h-3 w-3" />
+                        <ArrowRightIcon className="font-bold h-3 w-3" />
                     </Button>
                 </div>
             </div>
@@ -89,24 +90,24 @@ const Post = () => {
             </ul>
             {/** List Component **/}
             <div className="mt-2">
-                <div className="bg-gray-100 p-1 space-x-1 text-xs mb-1">
-                    <span className="">最新</span>
-                    <span className="">热门</span>
-                    <span className="">精华</span>
+                <div className="bg-gray-100 p-1 space-x-2 text-xs mb-1">
+                    <span className="cursor-pointer">最新</span>
+                    <span className="cursor-pointer">热门</span>
+                    <span className="cursor-pointer">精华</span>
                 </div>
                 {
                     true
                         ? <table className="table-fixed w-full border-none">
                             <tbody>
-                                <tr className="hover:bg-gray-100 h-10">
+                                <tr className="hover:bg-gray-100 h-12">
                                     <td>
-                                        <span className="mr-2 text-md">[原创工具]</span>
+                                        <Link className="mr-2 text-md">[原创工具]</Link>
                                         <Link className="text-sm">ahahahahahahahhhh...</Link>
                                     </td>
                                     <td className="w-1/12 text-sm">🔥1K</td>
                                     <td className="w-1/12 text-xs">
-                                        illusion<br />
-                                        2023-04-07
+                                        <Link>illusion</Link><br />
+                                        <span className="text-gray-600">2023-04-07</span>
                                     </td>
                                 </tr>
                                 <tr className="hover:bg-gray-100">
