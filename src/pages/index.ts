@@ -3,7 +3,7 @@ import Login from "./auth/login";
 import Registration from "./auth/registration";
 import Blog from "./blog";
 import User from "./user";
-import Post from "./post";
+import Block from "./post";
 import Share from "./share";
 
-export { NotFound, Login, Registration, User, Blog, Post, Share };
+export { NotFound, Login, Registration, User, Blog, Block, Share };

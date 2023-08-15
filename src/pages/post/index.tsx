@@ -10,7 +10,7 @@ interface Category {
     numPost: number;
 }
 
-const Post = () => {
+const Block = () => {
     const location = useLocation();
     const fakeCategories: Category[] = [
         {
@@ -134,4 +134,4 @@ const Post = () => {
     </>
 }
 
-export default Post;
+export default Block;
