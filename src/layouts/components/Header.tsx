@@ -11,9 +11,9 @@ const Header = () => {
     const navigate = useNavigate();
     const location = useLocation();
     const menu: Menu[] = [
-        { label: "Home", to: "/home" },
-        { label: "Post", to: "/post" },
+        { label: "Blog", to: "/blog" },
         { label: "Share", to: "/share" },
+        { label: "About", to: "/about" },
     ];
     const headerGradientCss = () => {
         return "bg-gradient-to-b from-gray-100 via-gray-150 to-gray-200"

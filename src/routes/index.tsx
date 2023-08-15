@@ -1,14 +1,14 @@
 import React from "react";
 import { createBrowserRouter, createRoutesFromElements, Navigate, Route, useRoutes } from "react-router-dom";
 import RequireAuth from "@/components/RequireAuth";
-import { Login, Registration, User, Home, NotFound } from "@/pages";
+import { Login, Registration, User, Blog, NotFound } from "@/pages";
 import { AppLayout } from "@/layouts/AppLayout";
 import Post from "@/pages/post";
 import Share from "@/pages/share";
 import PostDetail from "@/pages/post/detail";
 
 // Default home path
-export const defaultHomePath = "/home";
+export const defaultHomePath = "/blog";
 
 /**
  * appRouter
@@ -19,15 +19,15 @@ export const appRouter = createBrowserRouter(
     createRoutesFromElements(
         <React.Fragment>
             {/* Home page */}
-            <Route path="/" element={<Navigate to="/home" replace />} />
+            <Route path="/" element={<Navigate to="/blog" replace />} />
             {/* Login page */}
             <Route path="/login" element={<Login />} />
             {/* Registration page */}
             <Route path="/registration" element={<Registration />} />
             {/* App layout routes */}
             <Route element={<AppLayout />}>
-                <Route path={defaultHomePath} element={<Home />} />
-                <Route path="/post" element={<Post />} />
+                <Route path={defaultHomePath} element={<Blog />} />
+                {/** <Route path="/post" element={<Post />} /> **/}
                 <Route path="/post/:postId" element={<PostDetail />}/>
                 <Route path="/share" element={<Share />} />
                 {/* Profile page */}

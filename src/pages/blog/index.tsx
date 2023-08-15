@@ -1,6 +1,6 @@
 import { EyeIcon } from "@heroicons/react/24/solid";
 
-export default function() {
+const Blog = () => {
     const fakePosts: { id: number, category: string, title: string }[] = [
         { id: 1, category: "PHP", title: "PHP is a best language in the world" },
         { id: 2, category: "React", title: "Can you hear my heart beating?" },
@@ -171,3 +171,5 @@ export default function() {
         </div>
     </div>
 }
+
+export default Blog;
