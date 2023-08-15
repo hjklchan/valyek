@@ -1,4 +1,15 @@
-import { EyeIcon } from "@heroicons/react/24/solid";
+
+interface Block {
+    title: string;
+    description: string;
+    manager: string;
+    numPost: number;
+    numHeat: number;
+    latestUpdated: {
+        title: string;
+        updatedTime: string;
+    }
+}
 
 const Blog = () => {
     const fakePosts: { id: number, category: string, title: string }[] = [

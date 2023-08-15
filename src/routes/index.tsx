@@ -27,8 +27,8 @@ export const appRouter = createBrowserRouter(
             {/* App layout routes */}
             <Route element={<AppLayout />}>
                 <Route path={defaultHomePath} element={<Blog />} />
-                {/** <Route path="/post" element={<Post />} /> **/}
                 <Route path="/post/:postId" element={<PostDetail />}/>
+                <Route path="/post" element={<Post />}/>
                 <Route path="/share" element={<Share />} />
                 {/* Profile page */}
                 <Route path="/user" element={<RequireAuth><User /></RequireAuth>} />
