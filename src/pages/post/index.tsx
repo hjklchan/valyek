@@ -39,6 +39,7 @@ const Block = () => {
         console.log(id);
     }
     const createPost = () => {
+        // redirect to post creating page
         navigate("/post/create");
     }
     const numResults = 99999;
