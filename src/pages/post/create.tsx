@@ -1,4 +1,5 @@
 import ReactEditor from "@/components/ReactEditor";
+import { useDocumentTitle } from "@/hooks/useDocumentTitle";
 import {
     Button,
     FormControl,
@@ -8,6 +9,7 @@ import {
 } from "@chakra-ui/react";
 
 const Create = () => {
+    useDocumentTitle("Create Post");
     const onSubmit = (values) => {
     }
     return <>
