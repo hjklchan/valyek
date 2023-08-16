@@ -30,7 +30,7 @@ const Header = () => {
     // const 
 
     return <header
-        className={`sticky top-0 max-w-screen flex justify-between items-center shadow-md px-2 h-8 ${headerGradientCss()}`}
+        className={`sticky top-0 z-[999] max-w-screen flex justify-between items-center shadow-md px-2 h-8 ${headerGradientCss()}`}
     >
         {/** Text Logo **/}
         <div className="flex items-center h-full text-gray-800 mr-3">
