@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { useLocation, Link } from "react-router-dom";
+import { useLocation, Link, useNavigate } from "react-router-dom";
 import { Button } from "@chakra-ui/react"
 import { ArrowLeftIcon, ArrowRightIcon, PlusIcon } from "@heroicons/react/20/solid";
 
@@ -11,6 +11,7 @@ interface Category {
 
 const Block = () => {
     const location = useLocation();
+    const navigate = useNavigate();
     const fakeCategories: Category[] = [
         {
             id: 1,
@@ -38,7 +39,7 @@ const Block = () => {
         console.log(id);
     }
     const createPost = () => {
-        console.log("创建博文");
+        navigate("/post/create");
     }
     const numResults = 99999;
     useEffect(() => {
