@@ -100,10 +100,14 @@ const Block = () => {
                     true
                         ? <table className="table-fixed w-full border-none">{/** List **/}
                             <tbody>
-                                <tr className="hover:bg-gray-100 h-12">
+                                <tr className="hover:bg-gray-100">
                                     <td>
-                                        <Link to="/" className="mr-2 text-md">[原创工具]</Link>
-                                        <Link to="/post/1" className="text-sm">ahahahahahahahhhh...</Link>
+                                        <Link to="/" className="mr-2 text-sm text-blue-800">
+                                            [原创工具]
+                                        </Link>
+                                        <Link to="/post/1" className="text-sm">
+                                            ahahahahahahahhhh...
+                                        </Link>
                                     </td>
                                     <td className="w-1/12 text-sm">🔥1K</td>
                                     <td className="w-1/12 text-xs">
@@ -113,7 +117,9 @@ const Block = () => {
                                 </tr>
                                 <tr className="hover:bg-gray-100">
                                     <td>
-                                        <span className="mr-2 text-md">[原创工具]</span>
+                                        <span className="mr-2 text-sm text-blue-800">
+                                            [原创工具]
+                                        </span>
                                         <Link to="" className="text-sm">ahahahahahahahhhh...</Link>
                                     </td>
                                     <td className="w-1/12 text-sm">🔥549</td>
