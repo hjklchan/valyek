@@ -36,9 +36,6 @@ const ReactEditor = () => {
                 style={{ height: '500px', overflowY: 'hidden' }}
             />
         </div>
-        <div style={{ marginTop: '15px' }}>
-            {html}
-        </div>
     </>
 }
 
