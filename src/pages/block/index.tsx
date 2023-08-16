@@ -3,6 +3,7 @@ import { useLocation, Link } from "react-router-dom";
 import { Button } from "@chakra-ui/react"
 import { ArrowLeftIcon, ArrowRightIcon, PlusIcon } from "@heroicons/react/20/solid";
 import { useDocumentTitle } from "@/hooks/useDocumentTitle";
+import { PostCategory } from "@/api/blog";
 
 interface Category {
     id: number;
@@ -12,24 +13,28 @@ interface Category {
 
 const Block = () => {
     const location = useLocation();
-    const fakeCategories: Category[] = [
+    const fakeCategories: PostCategory[] = [
         {
             id: 1,
+            blockId: 1,
             title: "原创工具",
             numPost: 11021,
         },
         {
             id: 2,
+            blockId: 1,
             title: "原创汉化",
             numPost: 1
         },
         {
             id: 3,
+            blockId: 1,
             title: "Android 工具",
             numPost: 113,
         },
         {
             id: 4,
+            blockId: 1,
             title: "Android 汉化",
             numPost: 999,
         },
