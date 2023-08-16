@@ -5,7 +5,7 @@ import { IDomEditor, IEditorConfig, IToolbarConfig } from '@wangeditor/editor';
 
 const ReactEditor = () => {
     const [editor, setEditor] = useState<IDomEditor | null>(null);
-    const [html, setHtml] = useState("<p>Hello...</p>");
+    const [html, setHtml] = useState("");
     // 工具栏配置
     const toolbarConfig: Partial<IToolbarConfig> = {}
     // 编辑器配置
