@@ -2,7 +2,6 @@ import { useEffect } from "react";
 import { useLocation, Link } from "react-router-dom";
 import { Button } from "@chakra-ui/react"
 import { ArrowLeftIcon, ArrowRightIcon, PlusIcon } from "@heroicons/react/20/solid";
-import { useDocumentTitle } from "@/hooks/useDocumentTitle";
 import { PostCategory } from "@/api/blog";
 
 interface Category {
@@ -39,6 +38,9 @@ const Block = () => {
             numPost: 999,
         },
     ];
+    const selectedCategory = () => {
+
+    }
     const getPostsByCategory = (id: Category["id"]) => {
         // TODO Invoke API function
         console.log(id);

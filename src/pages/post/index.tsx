@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useLocation, Link, useNavigate } from "react-router-dom";
 import { Button } from "@chakra-ui/react"
 import { ArrowLeftIcon, ArrowRightIcon, PlusIcon } from "@heroicons/react/20/solid";
@@ -11,6 +11,7 @@ interface Category {
 
 const Block = () => {
     const location = useLocation();
+    const [category, setCategory] = useState("")
     const navigate = useNavigate();
     const fakeCategories: Category[] = [
         {
