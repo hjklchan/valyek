@@ -104,7 +104,7 @@ const Blog = () => {
                     <tr className="h-18 hover:bg-gray-100">
                         <td className="px-2 space-y-1">
                             <div className="items-center">
-                                <Link to={"/article"} className="font-semibold text-blue-800 hover:underline cursor-pointer">
+                                <Link to={"/block/1"} className="font-semibold text-blue-800 hover:underline cursor-pointer">
                                     {`< 软件区 >`}
                                 </Link>
                                 &nbsp;<em className="text-sm text-red-500">(101)</em>

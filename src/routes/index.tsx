@@ -1,7 +1,7 @@
 import React from "react";
 import { createBrowserRouter, createRoutesFromElements, Navigate, Route, useRoutes } from "react-router-dom";
 import RequireAuth from "@/components/RequireAuth";
-import { Login, Registration, User, Blog, Article, ArticleCreate, ArticleDetail, Share, NotFound } from "@/pages";
+import { Login, Registration, User, Blog, BlockDetail, ArticleCreate, ArticleDetail, Share, NotFound } from "@/pages";
 import { AppLayout } from "@/layouts/AppLayout";
 
 // Default home path
@@ -24,8 +24,8 @@ export const appRouter = createBrowserRouter(
             {/* App layout routes */}
             <Route element={<AppLayout />}>
                 <Route path={defaultHomePath} element={<Blog />} />
+                <Route path="/block/:blockId" element={<BlockDetail />} />
                 <Route path="/article/:articleId" element={<ArticleDetail />} />
-                <Route path="/article" element={<Article />} />
                 <Route path="/article/create" element={<ArticleCreate />} />
                 <Route path="/share" element={<Share />} />
                 {/* Profile page */}
