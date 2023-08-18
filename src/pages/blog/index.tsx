@@ -122,40 +122,7 @@ const Blog = () => {
             {blocks?.map((item) => {
               return blockRow(item);
             })}
-            <tr className="h-18 hover:bg-gray-100">
-              <td className="px-2 space-y-1">
-                <div className="items-center">
-                  <Link
-                    to={"/block/1"}
-                    className="font-semibold text-blue-800 hover:underline cursor-pointer"
-                  >
-                    {`< 软件区 >`}
-                  </Link>
-                  &nbsp;<em className="text-sm text-red-500">(101)</em>
-                </div>
-                <div>
-                  <p className="text-sm text-gray-500">
-                    ◇&nbsp;讨论操作系统底层或系统软件的漏洞分析、也包含游戏安全等相关话题！&nbsp;◇
-                  </p>
-                </div>
-                <div className="text-xs text-gray-500">
-                  维护作者: valyek, illusion
-                </div>
-              </td>
-              <td className="w-1/12 text-sm">🔥10000K</td>
-              <td className="w-2/12">
-                <h4 className="text-xs w-11/12 truncate">
-                  <a className="cursor-pointer hover:underline">
-                    【2023/8/9更新】计时器提醒 倒计时 间隔任务提醒
-                    消息框与AI语音播报
-                  </a>
-                </h4>
-                <span className="text-xs">
-                  2023-12-30{" "}
-                  <a className="cursor-pointer hover:underline">authorName</a>
-                </span>
-              </td>
-            </tr>
+            
             {/* <tr className="h-18 hover:bg-gray-100">
               <td className="px-2 space-y-1">
                 <div className="items-center">
@@ -194,7 +161,7 @@ const Blog = () => {
 
 const blockRow = (block: BlockV1) => {
   return (
-    <tr className="h-18 hover:bg-gray-100">
+    <tr key={block.id} className="h-18 hover:bg-gray-100">
       <td className="px-2 space-y-1">
         <div className="items-center">
           <Link
