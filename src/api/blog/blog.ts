@@ -1,7 +1,8 @@
-import { Block } from "."
+import { httpGet } from "@/utils/netx/request"
+import { BlockV1 } from "."
 
-const fetchBlocks = () => {
-    //
+const fetchBlocks = async () => {
+    return (await httpGet<BlockV1[]>("http://localhost:8080/api/blocks")).data;
 }
 
 const fetchPopularPosts = () => {
