@@ -4,7 +4,7 @@ export interface Block {
     title: string;
     description: string;
     author: string | Array<string>;
-    numPost: number;
+    numArticle: number;
     numHeat: number;
     latestUpdated: {
         id: number;
@@ -14,14 +14,14 @@ export interface Block {
     }
 }
 
-export interface PostCategory {
+export interface ArticleCategory {
     id: number;
     blockId: number;
     title: string;
-    numPost: number;
+    numArticle: number;
 }
 
-export interface Post {
+export interface Article {
     id: number;
     categoryId: number;
     title: string;
@@ -30,7 +30,7 @@ export interface Post {
     createdTime: string;
 }
 
-export interface PostDetail extends Post {
+export interface ArticleDetail extends Article {
     content: string;
 }
 

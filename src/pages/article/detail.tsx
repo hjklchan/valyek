@@ -1,8 +1,8 @@
 
 import { useParams } from "react-router-dom";
 
-const PostDetail = () => {
-    const { postId } = useParams();
+const Detail = () => {
+    const { articleId } = useParams();
     return <>
         {/** Article Title **/}
         <h1 className="text-3xl font-bold">Garlic bread with cheese: What the science tells us</h1>
@@ -26,4 +26,4 @@ const PostDetail = () => {
     </>
 }
 
-export default PostDetail;
+export default Detail;

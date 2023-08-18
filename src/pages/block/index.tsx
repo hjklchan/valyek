@@ -2,50 +2,50 @@ import { useEffect } from "react";
 import { useLocation, Link } from "react-router-dom";
 import { Button } from "@chakra-ui/react"
 import { ArrowLeftIcon, ArrowRightIcon, PlusIcon } from "@heroicons/react/20/solid";
-import { PostCategory } from "@/api/blog";
+import { ArticleCategory } from "@/api/blog";
 
 interface Category {
     id: number;
     title: string;
-    numPost: number;
+    numArticle: number;
 }
 
 const Block = () => {
     const location = useLocation();
-    const fakeCategories: PostCategory[] = [
+    const fakeCategories: ArticleCategory[] = [
         {
             id: 1,
             blockId: 1,
             title: "原创工具",
-            numPost: 11021,
+            numArticle: 11021,
         },
         {
             id: 2,
             blockId: 1,
             title: "原创汉化",
-            numPost: 1
+            numArticle: 1
         },
         {
             id: 3,
             blockId: 1,
             title: "Android 工具",
-            numPost: 113,
+            numArticle: 113,
         },
         {
             id: 4,
             blockId: 1,
             title: "Android 汉化",
-            numPost: 999,
+            numArticle: 999,
         },
     ];
     const selectedCategory = () => {
 
     }
-    const getPostsByCategory = (id: Category["id"]) => {
+    const getArticlesByCategory = (id: Category["id"]) => {
         // TODO Invoke API function
         console.log(id);
     }
-    const createPost = () => {
+    const createArticle = () => {
         console.log("创建博文");
     }
     const numResults = 99999;
@@ -66,7 +66,7 @@ const Block = () => {
                     borderRadius="0"
                     variant="outline"
                     size="sm"
-                    onClick={() => createPost()}
+                    onClick={() => createArticle()}
                 >
                     <PlusIcon className="h-4 w-4" />&nbsp;
                     <span className="text-gray-600">发帖</span>
@@ -90,7 +90,7 @@ const Block = () => {
                                 className="border-2 p-1 hover:bg-gray-200 hover:cursor-pointer"
                                 key={item.id}
                             >
-                                ◾ {item.title}<em className="text-red-600">&nbsp;({item.numPost})</em>
+                                ◾ {item.title}<em className="text-red-600">&nbsp;({item.numArticle})</em>
                             </li>
                         })
                         : <></>
@@ -113,7 +113,7 @@ const Block = () => {
                                         <Link to="/" className="mr-2 text-sm text-blue-800">
                                             [原创工具]
                                         </Link>
-                                        <Link to="/post/1" className="text-sm">
+                                        <Link to="/article/1" className="text-sm">
                                             ahahahahahahahhhh...
                                         </Link>
                                     </td>

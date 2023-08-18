@@ -6,10 +6,10 @@ import { ArrowLeftIcon, ArrowRightIcon, PlusIcon } from "@heroicons/react/20/sol
 interface Category {
     id: number;
     title: string;
-    numPost: number;
+    numArticle: number;
 }
 
-const Block = () => {
+const Article = () => {
     const location = useLocation();
     const [category, setCategory] = useState("")
     const navigate = useNavigate();
@@ -17,31 +17,31 @@ const Block = () => {
         {
             id: 1,
             title: "原创工具",
-            numPost: 11021,
+            numArticle: 11021,
         },
         {
             id: 2,
             title: "原创汉化",
-            numPost: 1
+            numArticle: 1
         },
         {
             id: 3,
             title: "Android 工具",
-            numPost: 113,
+            numArticle: 113,
         },
         {
             id: 4,
             title: "Android 汉化",
-            numPost: 999,
+            numArticle: 999,
         },
     ];
-    const getPostsByCategory = (id: Category["id"]) => {
+    const getArticlesByCategory = (id: Category["id"]) => {
         // TODO Invoke API function
         console.log(id);
     }
-    const createPost = () => {
-        // redirect to post creating page
-        navigate("/post/create");
+    const createArticle = () => {
+        // redirect to article creating page
+        navigate("/article/create");
     }
     const numResults = 99999;
     useEffect(() => {
@@ -61,7 +61,7 @@ const Block = () => {
                     borderRadius="0"
                     variant="outline"
                     size="sm"
-                    onClick={() => createPost()}
+                    onClick={() => createArticle()}
                 >
                     <PlusIcon className="h-4 w-4" />&nbsp;
                     <span className="text-gray-600">发帖</span>
@@ -85,7 +85,7 @@ const Block = () => {
                                 className="border-2 p-1 hover:bg-gray-200 hover:cursor-pointer"
                                 key={item.id}
                             >
-                                ◾ {item.title}<em className="text-red-600">&nbsp;({item.numPost})</em>
+                                ◾ {item.title}<em className="text-red-600">&nbsp;({item.numArticle})</em>
                             </li>
                         })
                         : <></>
@@ -108,7 +108,7 @@ const Block = () => {
                                         <Link to="/" className="mr-2 text-sm text-blue-800">
                                             [原创工具]
                                         </Link>
-                                        <Link to="/post/1" className="text-sm">
+                                        <Link to="/article/1" className="text-sm">
                                             ahahahahahahahhhh...
                                         </Link>
                                     </td>
@@ -143,4 +143,4 @@ const Block = () => {
     </>
 }
 
-export default Block;
+export default Article;

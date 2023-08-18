@@ -4,7 +4,7 @@ interface Block {
     title: string;
     description: string;
     manager: string;
-    numPost: number;
+    numArticle: number;
     numHeat: number;
     latestUpdated: {
         title: string;
@@ -13,7 +13,7 @@ interface Block {
 }
 
 const Blog = () => {
-    const fakePosts: { id: number, category: string, title: string }[] = [
+    const fakeArticles: { id: number, category: string, title: string }[] = [
         { id: 1, category: "PHP", title: "PHP is a best language in the world" },
         { id: 2, category: "React", title: "Can you hear my heart beating?" },
         { id: 4, category: "Typescript", title: "I cant stop now" },
@@ -35,8 +35,8 @@ const Blog = () => {
                 <table className="w-full">
                     <tbody>
                         {
-                            fakePosts.length > 0
-                                ? fakePosts.map(item => {
+                            fakeArticles.length > 0
+                                ? fakeArticles.map(item => {
                                     return <tr className="" key={item.id}>
                                         <td className="w-3/4 px-1 text-sm hover:bg-gray-100">
                                             <a className="cursor-pointer" onClick={() => { }}>
@@ -104,7 +104,7 @@ const Blog = () => {
                     <tr className="h-18 hover:bg-gray-100">
                         <td className="px-2 space-y-1">
                             <div className="items-center">
-                                <Link to={"/post"} className="font-semibold text-blue-800 hover:underline cursor-pointer">
+                                <Link to={"/article"} className="font-semibold text-blue-800 hover:underline cursor-pointer">
                                     {`< 软件区 >`}
                                 </Link>
                                 &nbsp;<em className="text-sm text-red-500">(101)</em>

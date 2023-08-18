@@ -9,7 +9,7 @@ import {
 } from "@chakra-ui/react";
 
 const Create = () => {
-    useDocumentTitle("Create Post");
+    useDocumentTitle("Create Article");
     const onSubmit = (values) => {
     }
     return <>
