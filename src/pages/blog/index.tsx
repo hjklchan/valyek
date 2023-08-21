@@ -18,14 +18,14 @@ const Blog = () => {
     { id: 10, category: "Go", title: "找出指定100个50位数之和的前十位数字" },
     { id: 11, category: "Go", title: "找出指定100个50位数之和的前十位数字" },
   ];
-  const getBlocksApi = () => {
+  const getSectionsApi = () => {
     fetchSections().then((value) => {
       setSections(value.data);
     });
   };
 
   useEffect(() => {
-    getBlocksApi();
+    getSectionsApi();
   }, []);
 
   const isLock = true;
@@ -108,7 +108,7 @@ const Blog = () => {
         <table className="table-fixed w-full border-separate border-spacing-y-2">
           <tbody>
             {sections?.map((item) => {
-              return blockRow(item);
+              return sectionRow(item);
             })}
             
             {/* <tr className="h-18 hover:bg-gray-100">
@@ -147,7 +147,7 @@ const Blog = () => {
   );
 };
 
-const blockRow = (section: Section) => {
+const sectionRow = (section: Section) => {
   return (
     <tr key={section.id} className="h-18 hover:bg-gray-100">
       <td className="px-2 space-y-1">

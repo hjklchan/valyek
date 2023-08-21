@@ -21,7 +21,7 @@ const Create = () => {
                     <Input borderRadius="0" type="text" />
                 </FormControl>
                 <FormControl isRequired>
-                    <FormLabel>Block</FormLabel>
+                    <FormLabel>Section</FormLabel>
                     <Select borderRadius="0">
                         <option value="1">软件区</option>
                         <option value="2">编程区</option>

@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useLocation, Link } from "react-router-dom";
 import { Button } from "@chakra-ui/react"
 import { ArrowLeftIcon, ArrowRightIcon, PlusIcon } from "@heroicons/react/20/solid";
-import { ArticleCategory } from "@/api/section";
+import { ArticleCategory } from "@/api/blog";
 
 interface Category {
     id: number;
@@ -10,30 +10,30 @@ interface Category {
     numArticle: number;
 }
 
-const Block = () => {
+const Section = () => {
     const location = useLocation();
     const fakeCategories: ArticleCategory[] = [
         {
             id: 1,
-            blockId: 1,
+            sectionId: 1,
             title: "原创工具",
             numArticle: 11021,
         },
         {
             id: 2,
-            blockId: 1,
+            sectionId: 1,
             title: "原创汉化",
             numArticle: 1
         },
         {
             id: 3,
-            blockId: 1,
+            sectionId: 1,
             title: "Android 工具",
             numArticle: 113,
         },
         {
             id: 4,
-            blockId: 1,
+            sectionId: 1,
             title: "Android 汉化",
             numArticle: 999,
         },
@@ -148,4 +148,4 @@ const Block = () => {
     </>
 }
 
-export default Block;
+export default Section;

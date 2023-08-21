@@ -1,4 +1,4 @@
-export interface Block {
+export interface Section {
   id: number;
   title: string;
   description: string;
@@ -27,7 +27,7 @@ export interface Section {
 
 export interface ArticleCategory {
   id: number;
-  blockId: number;
+  sectionId: number;
   title: string;
   numArticle: number;
 }
