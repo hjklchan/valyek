@@ -13,7 +13,7 @@ export interface Block {
   };
 }
 
-export interface BlockV1 {
+export interface Section {
   id: number;
   title: string;
   description: string;

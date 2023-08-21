@@ -1,8 +1,8 @@
 import { httpGet } from "@/utils/netx/request"
-import { BlockV1 } from "."
+import { Section } from "."
 
-const fetchBlocks = async () => {
-    return (await httpGet<BlockV1[]>("http://localhost:8080/api/blocks")).data;
+const fetchSections = async () => {
+    return (await httpGet<Section[]>("http://localhost:8080/api/sections")).data;
 }
 
 const fetchPopularPosts = () => {
@@ -22,7 +22,7 @@ const fetchPostDetail = () => {
 }
 
 export {
-    fetchBlocks,
+    fetchSections,
     fetchPopularPosts,
     fetchCategories,
     fetchPostsByCategory,

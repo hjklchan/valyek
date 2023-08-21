@@ -1,23 +1,11 @@
 import { useEffect, useState } from "react";
-import { fetchBlocks } from "@/api/blog/blog";
+import { fetchSections } from "@/api/blog/blog";
 import { log } from "console";
 import { Link } from "react-router-dom";
-import { BlockV1 } from "@/api/blog";
-
-interface Block {
-  title: string;
-  description: string;
-  manager: string;
-  numArticle: number;
-  numHeat: number;
-  latestUpdated: {
-    title: string;
-    updatedTime: string;
-  };
-}
+import { Section } from "@/api/blog/index.d";
 
 const Blog = () => {
-  const [blocks, setBlocks] = useState<BlockV1[] | null>(null);
+  const [sections, setSections] = useState<Section[] | null>(null);
   const fakeArticles: { id: number; category: string; title: string }[] = [
     { id: 1, category: "PHP", title: "PHP is a best language in the world" },
     { id: 2, category: "React", title: "Can you hear my heart beating?" },
@@ -31,8 +19,8 @@ const Blog = () => {
     { id: 11, category: "Go", title: "找出指定100个50位数之和的前十位数字" },
   ];
   const getBlocksApi = () => {
-    fetchBlocks().then((value) => {
-      setBlocks(value.data);
+    fetchSections().then((value) => {
+      setSections(value.data);
     });
   };
 
@@ -119,7 +107,7 @@ const Blog = () => {
         <h2 className="p-1 text-sm bg-gray-200">综合区块</h2>
         <table className="table-fixed w-full border-separate border-spacing-y-2">
           <tbody>
-            {blocks?.map((item) => {
+            {sections?.map((item) => {
               return blockRow(item);
             })}
             
@@ -159,42 +147,42 @@ const Blog = () => {
   );
 };
 
-const blockRow = (block: BlockV1) => {
+const blockRow = (section: Section) => {
   return (
-    <tr key={block.id} className="h-18 hover:bg-gray-100">
+    <tr key={section.id} className="h-18 hover:bg-gray-100">
       <td className="px-2 space-y-1">
         <div className="items-center">
           <Link
-            to={`/block/${block.id}`}
+            to={`/section/${section.id}`}
             className="font-semibold text-blue-800 hover:underline cursor-pointer"
           >
-            {`< ${block.title} >`}
+            {`< ${section.title} >`}
           </Link>
-          &nbsp;<em className="text-sm text-red-500">({block.numArticle})</em>
+          &nbsp;<em className="text-sm text-red-500">({section.numArticle})</em>
         </div>
         <div>
           <p className="text-sm text-gray-500">
-            ◇&nbsp;{block.description}&nbsp;◇
+            ◇&nbsp;{section.description}&nbsp;◇
           </p>
         </div>
         <div className="text-xs text-gray-500">
-          维护作者: {block.maintainers}
+          维护作者: {section.maintainers}
         </div>
       </td>
       {/** Format number of heat to *K **/}
-      <td className="w-1/12 text-sm">🔥{block.numHeat}</td>
+      <td className="w-1/12 text-sm">🔥{section.numHeat}</td>
       <td className="w-2/12">
-        {block.articleTitle.length > 0 ? (
+        {section.articleTitle.length > 0 ? (
           <>
             <h4 className="text-xs w-11/12 truncate">
               <a className="cursor-pointer hover:underline">
-                {block.articleTitle}
+                {section.articleTitle}
               </a>
             </h4>
             <span className="text-xs">
-              {block.articleUpdatedAt}
+              {section.articleUpdatedAt}
               <a className="cursor-pointer hover:underline">
-                {block.articleAuthor}
+                {section.articleAuthor}
               </a>
             </span>
           </>

@@ -3,7 +3,7 @@ import Login from "./auth/login";
 import Registration from "./auth/registration";
 import Blog from "./blog";
 import User from "./user";
-import BlockDetail from "./block/detail";
+import SectionDetail from "./section/detail";
 import ArticleCreate from "./article/create";
 import Share from "./share";
 import ArticleDetail from "@/pages/article/detail";
@@ -14,7 +14,7 @@ export {
   Registration,
   User,
   Blog,
-  BlockDetail,
+  SectionDetail,
   ArticleCreate,
   ArticleDetail,
   Share,

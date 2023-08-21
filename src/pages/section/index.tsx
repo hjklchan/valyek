@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useLocation, Link } from "react-router-dom";
 import { Button } from "@chakra-ui/react"
 import { ArrowLeftIcon, ArrowRightIcon, PlusIcon } from "@heroicons/react/20/solid";
-import { ArticleCategory } from "@/api/blog";
+import { ArticleCategory } from "@/api/section";
 
 interface Category {
     id: number;
