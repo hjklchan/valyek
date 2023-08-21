@@ -5,12 +5,12 @@ export interface Section {
   author: string | Array<string>;
   numArticle: number;
   numHeat: number;
-  latestUpdated: {
-    id: number;
-    title: string;
-    author: string;
-    updatedTime: string;
-  };
+  // latestUpdated: {
+  //   id: number;
+  //   title: string;
+  //   author: string;
+  //   updatedTime: string;
+  // };
 }
 
 export interface Section {

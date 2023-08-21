@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
-import { useLocation, Link, useNavigate } from "react-router-dom";
+import { useLocation, Link, useNavigate, useParams } from "react-router-dom";
 import { Button } from "@chakra-ui/react"
 import { ArrowLeftIcon, ArrowRightIcon, PlusIcon } from "@heroicons/react/20/solid";
+import { fetchSection } from "@/api/blog/blog"
+import { Section } from "@/api/blog";
 
 interface Category {
     id: number;
@@ -10,8 +12,9 @@ interface Category {
 }
 
 const Detail = () => {
-    const location = useLocation();
+    const params = useParams();
     const [category, setCategory] = useState("")
+    const [section, setSection] = useState<Section | null>()
     const navigate = useNavigate();
     const fakeCategories: Category[] = [
         {
@@ -35,6 +38,11 @@ const Detail = () => {
             numArticle: 999,
         },
     ];
+    const getSection = (categoryId: string | number) =>
+        fetchSection(categoryId).then(res => {
+            console.log(res.data)
+        })
+
     const getArticlesByCategory = (id: Category["id"]) => {
         // TODO Invoke API function
         console.log(id);
@@ -45,8 +53,8 @@ const Detail = () => {
     }
     const numResults = 99999;
     useEffect(() => {
-        const loc = location.pathname;
-        console.log(loc);
+        console.log()
+        getSection(params.sectionId)
     }, [])
     return <>
         <div className="mt-5">
