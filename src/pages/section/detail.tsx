@@ -40,6 +40,7 @@ const Detail = () => {
     const getSection = () => {
         fetchSection(sectionId).then(res => {
             const data = res.data;
+            console.log(data)
             setSectionInfo(prevState => {
                 return {
                     ...prevState,
@@ -65,7 +66,8 @@ const Detail = () => {
         // redirect to article creating page
         navigate("/article/create");
     }
-    const chooseCategory = (categoryId: string) => {
+    const onCategoryChange = (categoryId: string) => {
+        console.log(categoryId)
         fetchArticlesByCategoryId(categoryId).then(res => {
             setArticles(res.data);
         });
@@ -106,14 +108,14 @@ const Detail = () => {
                 </div>
             </div>
             <ul className="flex flex-wrap  gap-2 mt-3 text-xs">
-                <li className="border-2 p-1 hover:bg-gray-200" onClick={() => getAllArticles()}>全部</li>
+                <li className="border-2 p-1 hover:bg-gray-200 hover:cursor-pointer" onClick={() => getAllArticles()}>全部</li>
                 {
                     (categories.length) > 0
                         ? categories.map(item => {
                             return <li
                                 className="border-2 p-1 hover:bg-gray-200 hover:cursor-pointer"
                                 key={item.id}
-                                onClick={() => chooseCategory(item.id.toString())}
+                                onClick={() => onCategoryChange(item.id.toString())}
                             >
                                 ◾ {item.title}<em className="text-red-600">&nbsp;({item.numArticle})</em>
                             </li>
@@ -130,7 +132,7 @@ const Detail = () => {
                     <span className="cursor-pointer">精华</span>
                 </div>
                 {
-                    true
+                    articles.length > 0
                         ? <table className="table-fixed w-full border-none">{/** List **/}
                             <tbody>
                                 {
@@ -138,16 +140,16 @@ const Detail = () => {
                                         return <tr className="hover:bg-gray-100" key={item.id}>
                                             <td>
                                                 <Link to="/" className="mr-2 text-sm text-blue-800">
-                                                    [原创工具]
+                                                [{item.categoryTitle}]
                                                 </Link>
                                                 <Link to="/article/1" className="text-sm">
-                                                    ahahahahahahahhhh...
+                                                    {item.title}
                                                 </Link>
                                             </td>
-                                            <td className="w-1/12 text-sm">🔥1K</td>
+                                            <td className="w-1/12 text-sm">&nbsp;🔥{item.numHeat}</td>
                                             <td className="w-1/12 text-xs">
-                                                <Link to="">illusion</Link><br />
-                                                <span className="text-gray-600">2023-04-07</span>
+                                                <Link to="">{item.author}</Link><br />
+                                                <span className="text-gray-600">{item.createdAt}</span>
                                             </td>
                                         </tr>
                                     })
@@ -168,7 +170,7 @@ const Detail = () => {
                             </tbody>
                         </table>
                         : <div className="flex justify-center my-2">{/** Empty Text **/}
-                            <span className="text-sm">No record</span>
+                            <span className="text-sm text-gray-400">No record</span>
                         </div>
                 }
             </div>

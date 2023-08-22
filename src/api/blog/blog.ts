@@ -14,11 +14,11 @@ const fetchCategoryBySectionId = async (sectionId: any) => {
 }
 
 const fetchArticlesByCategoryId = async (categoryId: string) => {
-    let url = "http://localhost:8080/api/articles"
+    let url = `http://localhost:8080/api/articles/${categoryId}/category`
     return (await httpGet<Article[]>(url)).data
 }
 
-const fetchArticlesBySectionId = async(sectionId: any) => {
+const fetchArticlesBySectionId = async (sectionId: any) => {
     const url = `http://localhost:8080/api/articles/${sectionId}/section`;
     return (await httpGet<Article[]>(url)).data;
 }

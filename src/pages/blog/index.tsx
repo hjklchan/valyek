@@ -31,7 +31,7 @@ const Blog = () => {
     const isLock = true;
     return (
         <div className="space-y-3">
-            <div className="grid grid-cols-4 gap-0 border-2">
+            {/*<div className="grid grid-cols-4 gap-0 border-2">
                 <div className="">
                     <h2 className="bg-gray-200 p-1 text-sm cursor-pointer">
                         热门文章 Top 10
@@ -98,10 +98,10 @@ const Blog = () => {
                         </tbody>
                     </table>
                 </div>
-            </div>
+            </div>*/}
             <div className="border-2">
                 <h2 className="p-1 text-sm bg-gray-200">Photos</h2>
-                <div className="p-1 text-sm">Put photos here....</div>
+                <div className="p-1 text-sm h-32">Put photos here....</div>
             </div>
             <div className="border">
                 <h2 className="p-1 text-sm bg-gray-200">综合区块</h2>
