@@ -66,8 +66,9 @@ const Detail = () => {
         navigate("/article/create");
     }
     const chooseCategory = (categoryId: string) => {
-        console.log(categoryId)
-        fetchArticlesByCategoryId(categoryId)
+        fetchArticlesByCategoryId(categoryId).then(res => {
+            setArticles(res.data);
+        });
     }
 
     const numResults = 99999;
