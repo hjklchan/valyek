@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-import { useLocation, Link, useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { Button } from "@chakra-ui/react"
 import { ArrowLeftIcon, ArrowRightIcon, PlusIcon } from "@heroicons/react/20/solid";
-import { fetchSection } from "@/api/blog/blog"
-import { Section } from "@/api/blog";
+import { fetchArticlesBySectionId, fetchArticlesByCategoryId, fetchCategoryBySectionId, fetchSection } from "@/api/blog/blog"
+import { Article, CategoryItem, SectionInfo } from "@/api/blog";
 
 interface Category {
     id: number;
@@ -12,56 +12,76 @@ interface Category {
 }
 
 const Detail = () => {
-    const params = useParams();
-    const [category, setCategory] = useState("")
-    const [section, setSection] = useState<Section | null>()
+    const { sectionId } = useParams();
     const navigate = useNavigate();
-    const fakeCategories: Category[] = [
-        {
-            id: 1,
-            title: "原创工具",
-            numArticle: 11021,
-        },
-        {
-            id: 2,
-            title: "原创汉化",
-            numArticle: 1
-        },
-        {
-            id: 3,
-            title: "Android 工具",
-            numArticle: 113,
-        },
-        {
-            id: 4,
-            title: "Android 汉化",
-            numArticle: 999,
-        },
-    ];
-    const getSection = (categoryId: string | number) =>
-        fetchSection(categoryId).then(res => {
-            console.log(res.data)
-        })
 
-    const getArticlesByCategory = (id: Category["id"]) => {
-        // TODO Invoke API function
-        console.log(id);
+    // ================================
+    // ============ States ============
+    // ================================
+    const [categoryId, setCategoryId] = useState<string | null>(null);
+    const [categories, setCategories] = useState<CategoryItem[]>([]);
+    const [articles, setArticles] = useState<Article[]>([]);
+    const [sectionInfo, setSectionInfo] = useState<SectionInfo>({
+        title: "",
+        description: "",
+        maintainers: "",
+        numArticle: 0,
+        categories: null,
+    });
+
+    // ==============================
+    // ============ APIs ============
+    // ==============================
+    const getCategories = () => {
+        fetchCategoryBySectionId(sectionId).then(res => {
+            setCategories(res.data);
+        })
     }
+    const getSection = () => {
+        fetchSection(sectionId).then(res => {
+            const data = res.data;
+            setSectionInfo(prevState => {
+                return {
+                    ...prevState,
+                    title: data.title,
+                    description: data.description,
+                    maintainers: data.maintainers,
+                    numArticle: data.numArticle,
+                    categories: null,
+                }
+            });
+        })
+    }
+    const getAllArticles = () => {
+        fetchArticlesBySectionId(sectionId).then(res => {
+            setArticles(res.data)
+        });
+    }
+
+    // ==============================
+    // ========== Eventss ===========
+    // ==============================
     const createArticle = () => {
         // redirect to article creating page
         navigate("/article/create");
     }
+    const chooseCategory = (categoryId: string) => {
+        console.log(categoryId)
+        fetchArticlesByCategoryId(categoryId)
+    }
+
     const numResults = 99999;
     useEffect(() => {
-        console.log()
-        getSection(params.sectionId)
+        getSection();
+        getCategories();
+        getAllArticles();
     }, [])
     return <>
         <div className="mt-5">
             <h1 className="text-2xl font-semibold leading-none tracking-tight text-blue-800">
-                {"< 软件区 >"}
+                {`< ${sectionInfo.title} >`}
                 <span className="ml-3 text-base leading-none tracking-tight text-gray-400">
-                    {numResults} result{numResults > 1 ? "s" : ""}
+                    {sectionInfo.numArticle} result{sectionInfo.numArticle > 1 ? "s" : ""}
                 </span>
             </h1>
             <div className="flex justify-between mt-5">
@@ -85,13 +105,14 @@ const Detail = () => {
                 </div>
             </div>
             <ul className="flex flex-wrap  gap-2 mt-3 text-xs">
-                <li className="border-2 p-1 hover:bg-gray-200">全部</li>
+                <li className="border-2 p-1 hover:bg-gray-200" onClick={() => getAllArticles()}>全部</li>
                 {
-                    fakeCategories.length > 0
-                        ? fakeCategories.map(item => {
+                    (categories.length) > 0
+                        ? categories.map(item => {
                             return <li
                                 className="border-2 p-1 hover:bg-gray-200 hover:cursor-pointer"
                                 key={item.id}
+                                onClick={() => chooseCategory(item.id.toString())}
                             >
                                 ◾ {item.title}<em className="text-red-600">&nbsp;({item.numArticle})</em>
                             </li>
@@ -111,22 +132,26 @@ const Detail = () => {
                     true
                         ? <table className="table-fixed w-full border-none">{/** List **/}
                             <tbody>
-                                <tr className="hover:bg-gray-100">
-                                    <td>
-                                        <Link to="/" className="mr-2 text-sm text-blue-800">
-                                            [原创工具]
-                                        </Link>
-                                        <Link to="/article/1" className="text-sm">
-                                            ahahahahahahahhhh...
-                                        </Link>
-                                    </td>
-                                    <td className="w-1/12 text-sm">🔥1K</td>
-                                    <td className="w-1/12 text-xs">
-                                        <Link to="">illusion</Link><br />
-                                        <span className="text-gray-600">2023-04-07</span>
-                                    </td>
-                                </tr>
-                                <tr className="hover:bg-gray-100">
+                                {
+                                    articles.map(item => {
+                                        return <tr className="hover:bg-gray-100" key={item.id}>
+                                            <td>
+                                                <Link to="/" className="mr-2 text-sm text-blue-800">
+                                                    [原创工具]
+                                                </Link>
+                                                <Link to="/article/1" className="text-sm">
+                                                    ahahahahahahahhhh...
+                                                </Link>
+                                            </td>
+                                            <td className="w-1/12 text-sm">🔥1K</td>
+                                            <td className="w-1/12 text-xs">
+                                                <Link to="">illusion</Link><br />
+                                                <span className="text-gray-600">2023-04-07</span>
+                                            </td>
+                                        </tr>
+                                    })
+                                }
+                                {/*<tr className="hover:bg-gray-100">
                                     <td>
                                         <span className="mr-2 text-sm text-blue-800">
                                             [原创工具]
@@ -138,8 +163,7 @@ const Detail = () => {
                                         illusion<br />
                                         2023-04-07
                                     </td>
-
-                                </tr>
+                                </tr>*/}
                             </tbody>
                         </table>
                         : <div className="flex justify-center my-2">{/** Empty Text **/}
