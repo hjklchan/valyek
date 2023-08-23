@@ -1,7 +1,7 @@
 import React from "react";
 import { createBrowserRouter, createRoutesFromElements, Navigate, Route, useRoutes } from "react-router-dom";
 import RequireAuth from "@/components/RequireAuth";
-import { Login, Registration, User, Blog, SectionDetail, ArticleCreate, ArticleDetail, Share, NotFound } from "@/pages";
+import { Login, Registration, User, Blog, SectionDetail, ArticleCreate, ArticleDetail, Share, NotFound, About } from "@/pages";
 import { AppLayout } from "@/layouts/AppLayout";
 
 // Default home path
@@ -30,6 +30,7 @@ export const appRouter = createBrowserRouter(
                 <Route path="/share" element={<Share />} />
                 {/* Profile page */}
                 <Route path="/user" element={<RequireAuth><User /></RequireAuth>} />
+                <Route path="/about" element={<About />} />
                 <Route path="/*" element={<NotFound />} />
             </Route>
             {/* Not found page */}

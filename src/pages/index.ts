@@ -7,15 +7,17 @@ import SectionDetail from "./section/detail";
 import ArticleCreate from "./article/create";
 import Share from "./share";
 import ArticleDetail from "@/pages/article/detail";
+import About from "@/pages/about";
 
 export {
-  NotFound,
-  Login,
-  Registration,
-  User,
-  Blog,
-  SectionDetail,
-  ArticleCreate,
-  ArticleDetail,
-  Share,
+    NotFound,
+    Login,
+    Registration,
+    User,
+    Blog,
+    SectionDetail,
+    ArticleCreate,
+    ArticleDetail,
+    Share,
+    About,
 };

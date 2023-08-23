@@ -67,18 +67,18 @@ const Detail = () => {
         navigate("/article/create");
     }
     const onCategoryChange = (categoryId: string) => {
-        console.log(categoryId)
         fetchArticlesByCategoryId(categoryId).then(res => {
             setArticles(res.data);
         });
     }
 
-    const numResults = 99999;
     useEffect(() => {
         getSection();
         getCategories();
+        // 默认获取所有文章
         getAllArticles();
     }, [])
+
     return <>
         <div className="mt-5">
             <h1 className="text-2xl font-semibold leading-none tracking-tight text-blue-800">
