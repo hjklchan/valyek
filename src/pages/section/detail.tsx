@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import { Button } from "@chakra-ui/react"
+import { Button, useToast } from "@chakra-ui/react"
 import { ArrowLeftIcon, ArrowRightIcon, PlusIcon } from "@heroicons/react/20/solid";
 import { fetchArticlesBySectionId, fetchArticlesByCategoryId, fetchCategoryBySectionId, fetchSection } from "@/api/blog/blog"
 import { Article, CategoryItem, SectionInfo } from "@/api/blog";
+import { hasToken } from "@/utils/tokenx";
+import { duration } from "moment";
 
 interface Category {
     id: number;
@@ -12,6 +14,7 @@ interface Category {
 }
 
 const Detail = () => {
+    const toast = useToast();
     const { sectionId } = useParams();
     const navigate = useNavigate();
 
@@ -40,7 +43,6 @@ const Detail = () => {
     const getSection = () => {
         fetchSection(sectionId).then(res => {
             const data = res.data;
-            console.log(data)
             setSectionInfo(prevState => {
                 return {
                     ...prevState,
@@ -63,8 +65,18 @@ const Detail = () => {
     // ========== Eventss ===========
     // ==============================
     const createArticle = () => {
-        // redirect to article creating page
-        navigate("/article/create");
+        if (hasToken()) {
+            // redirect to article creating page
+            navigate("/article/create", { state: { sectionId } });
+        } else {
+            toast({
+                title: "Unable to create article",
+                description: "Must be logged in first",
+                duration: 2000,
+                status: "warning",
+                position: "top",
+            })
+        }
     }
     const onCategoryChange = (categoryId: string) => {
         fetchArticlesByCategoryId(categoryId).then(res => {
@@ -140,7 +152,7 @@ const Detail = () => {
                                         return <tr className="hover:bg-gray-100" key={item.id}>
                                             <td>
                                                 <Link to="/" className="mr-2 text-sm text-blue-800">
-                                                [{item.categoryTitle}]
+                                                    [{item.categoryTitle}]
                                                 </Link>
                                                 <Link to="/article/1" className="text-sm">
                                                     {item.title}
