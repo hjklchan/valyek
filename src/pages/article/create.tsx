@@ -10,14 +10,15 @@ import {
     Select
 } from "@chakra-ui/react";
 import { Formik, Form, Field, FormikHelpers } from "formik"
-import { fetchSections } from "@/api/blog/blog";
+import { fetchSections, storeArticle } from "@/api/blog/blog";
 import { useEffect, useState } from "react";
 import { Section } from "@/api/blog/index.d"
+import { createRequire } from "module";
 
 type FormValues = {
     title: string;
-    sectionId: string;
-    categoryId: string;
+    sectionId: number;
+    categoryId: number;
     content: string;
 }
 
@@ -28,12 +29,14 @@ const Create = () => {
     // =============================
     // =========== APIs ============
     // =============================
+    const [loading, setLoading] = useState<boolean>(false);
     const [sections, setSections] = useState<Section[]>([]);
+    const [content, setContent] = useState<string>("");
 
     const initialValues: FormValues = {
         title: "",
         sectionId: location.state.sectionId,
-        categoryId: "",
+        categoryId: 0,
         content: "hello",
     }
 
@@ -42,6 +45,14 @@ const Create = () => {
     // =============================
     const getSections = () => {
         fetchSections().then(res => setSections(res.data))
+    }
+    const createArticle = (values: FormValues) => {
+        setLoading(true);
+        storeArticle<FormValues>(values).then(() => {
+            setLoading(false);
+        }).catch((error) => {
+            setLoading(false);
+        })
     }
 
 
@@ -66,7 +77,8 @@ const Create = () => {
     // ========== Events ===========
     // =============================
     const onSubmit = (values: FormValues, actions: FormikHelpers<FormValues>) => {
-        console.log(values);
+        values.content = content;
+        createArticle(values)
     }
 
     useEffect(() => {
@@ -126,7 +138,7 @@ const Create = () => {
                         {({ field, form }: any) => (
                             <FormControl>
                                 <FormLabel>Content</FormLabel>
-                                <ReactEditor />
+                                <ReactEditor onChange={(editor) => setContent(editor.getHtml)} />
                             </FormControl>
 
                         )}
@@ -135,14 +147,12 @@ const Create = () => {
                         className="mt-4"
                         colorScheme="blue"
                         type="submit"
-                    // isLoading={true}
+                        isLoading={loading}
                     >
                         OK
                     </Button>
                 </Form>
             </Formik>
-            <form onSubmit={() => { }}>
-            </form>
         </div>
     </>
 }

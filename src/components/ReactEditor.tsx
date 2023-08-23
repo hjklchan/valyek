@@ -3,7 +3,11 @@ import { Editor, Toolbar } from '@wangeditor/editor-for-react';
 import { useState, useEffect } from "react";
 import { IDomEditor, IEditorConfig, IToolbarConfig } from '@wangeditor/editor';
 
-const ReactEditor = () => {
+export interface EditorProps {
+    onChange: (editor: IDomEditor) => void
+}
+
+const ReactEditor = (props: EditorProps) => {
     const [editor, setEditor] = useState<IDomEditor | null>(null);
     const [html, setHtml] = useState("");
     // 工具栏配置
@@ -31,7 +35,7 @@ const ReactEditor = () => {
                 defaultConfig={editorConfig}
                 value={html}
                 onCreated={setEditor}
-                onChange={editor => setHtml(editor.getHtml())}
+                onChange={editor => props.onChange(editor)}
                 mode="default"
                 style={{ height: '500px', overflowY: 'hidden' }}
             />

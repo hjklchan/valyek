@@ -1,4 +1,4 @@
-import { httpGet } from "@/utils/netx/request"
+import { httpGet, httpPost } from "@/utils/netx/request"
 import { CategoryItem, Section, SectionInfo, Article } from "."
 
 const fetchSections = async () => {
@@ -21,6 +21,11 @@ const fetchArticlesByCategoryId = async (categoryId: string) => {
 const fetchArticlesBySectionId = async (sectionId: any) => {
     const url = `http://localhost:8080/api/articles/${sectionId}/section`;
     return (await httpGet<Article[]>(url)).data;
+}
+
+const storeArticle =  async<T>(values: T) => {
+    const url = "http://localhost:8080/api/articles"
+    return (await httpPost<any>(url, values)).data
 }
 
 const fetchPopularPosts = () => {
@@ -46,6 +51,7 @@ export {
     fetchCategoryBySectionId,
     fetchArticlesBySectionId,
     fetchArticlesByCategoryId,
+    storeArticle,
     fetchPostsByCategory,
     fetchPostDetail
 };
