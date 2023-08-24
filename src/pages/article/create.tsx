@@ -1,5 +1,5 @@
 import ReactEditor from "@/components/ReactEditor";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate, Link } from "react-router-dom";
 import { useDocumentTitle } from "@/hooks/useDocumentTitle";
 import {
     Button,
@@ -7,13 +7,14 @@ import {
     FormErrorMessage,
     FormLabel,
     Input,
-    Select
+    Select,
+    useToast,
+    UseToastOptions
 } from "@chakra-ui/react";
 import { Formik, Form, Field, FormikHelpers } from "formik"
 import { fetchCategoryBySectionId, fetchSections, storeArticle } from "@/api/blog/blog";
 import { useEffect, useState } from "react";
 import { CategoryItem, Section } from "@/api/blog/index.d"
-import { createRequire } from "module";
 
 type FormValues = {
     title: string;
@@ -29,6 +30,7 @@ const Create = () => {
     useDocumentTitle("Create Article");
     const location = useLocation();
     const navigate = useNavigate();
+    const toast = useToast();
 
     // =============================
     // =========== APIs ============
@@ -60,12 +62,25 @@ const Create = () => {
         setLoading(true);
         storeArticle<FormValues>(values).then((res) => {
             setLoading(false);
-            goDetailPage(res.data.newId);
+            // Configure Toast
+            const options: UseToastOptions = {
+                title: "Create successfully",
+                description: <>
+                    Jump to your new article after 3 seconds&nbsp;
+                </>,
+                status: "success",
+                duration: 3000,
+            }
+            // Show Toast
+            toast(options);
+            // Jump to article detail after 3 seconds
+            setTimeout(() => {
+                navigate(`/article/${res.data.newId}`)
+            }, 4000);
         }).catch((error) => {
             setLoading(false);
         })
     }
-
 
     // =============================
     // ========= Validates =========
@@ -90,9 +105,6 @@ const Create = () => {
     const onSubmit = (values: FormValues, actions: FormikHelpers<FormValues>) => {
         values.content = content;
         createArticle(values)
-    }
-    const goDetailPage = (articleId: number) => {
-        navigate(`/article/${articleId}`);
     }
 
     useEffect(() => {
