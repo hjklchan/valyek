@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { fetchSections } from "@/api/blog/blog";
-import { log } from "console";
 import { Link } from "react-router-dom";
 import { Section } from "@/api/blog/index.d";
 
@@ -108,7 +107,6 @@ const Blog = () => {
                 <table className="table-fixed w-full border-separate border-spacing-y-2">
                     <tbody>
                         {sections?.map((item) => {
-                            console.log(item)
                             return sectionRow(item);
                         })}
 
