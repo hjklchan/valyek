@@ -1,23 +1,69 @@
-
+import { useEffect, useState } from "react";
+import { fetchArticleById } from "@/api/blog/blog";
 import { useParams } from "react-router-dom";
+import { ArticleDetail } from "@/api/blog";
+import { argv0 } from "process";
 
 const Detail = () => {
     const { articleId } = useParams();
+
+    // ======================
+    // ======= States =======
+    // ======================
+    const [loading, setLoading] = useState<boolean>(false);
+    const [article, setArticle] = useState<ArticleDetail>({
+        id: 0,
+        categoryId: 0,
+        title: "",
+        categoryTitle: "",
+        numHeat: 0,
+        author: "",
+        content: "",
+        createdAt: null
+    })
+
+    // ======================
+    // ======== APIs ========
+    // ======================
+    const getArticle = () => {
+        setLoading(true);
+        if (articleId != undefined) {
+            fetchArticleById(articleId).then(res => {
+                setLoading(false);
+                setArticle(res.data);
+            }).catch(error => {
+                setLoading(false);
+            })
+        }
+    }
+
+    // =======================
+    // ======= Handles =======
+    // =======================
+    const handleDatetime = (date: Date): string => {
+        const dt = new Date(date);
+        return dt.toUTCString()
+    }
+
+    useEffect(() => {
+        getArticle();
+    }, [])
+
     return <>
+        <div className="space-x-3 my-1">
+            <span className="text-sm text-gray-500">By <b>{article.author}</b></span>
+            <span className="text-sm text-gray-500">{handleDatetime(article.createdAt)}</span>
+        </div>
         {/** Article Title **/}
-        <h1 className="text-3xl font-bold">Garlic bread with cheese: What the science tells us</h1>
+        <h1 className="text-2xl font-bold">{article.title}</h1>
         <br />
         {/** Article Main Content **/}
         <article className="prose prose max-w-none min-h-50 hover:prose-a:text-blue-500 prose-neutral">
-            <p>
-                For years parents have espoused the health benefits of eating garlic bread with cheese to their
-                children, with the food earning such an iconic status in our culture that kids will often dress
-                up as warm, cheesy loaf for Halloween.
-            </p>
-            <p>
-                But a recent study shows that the celebrated appetizer may be linked to a series of rabies cases
-                springing up around the country.
-            </p>
+            {
+                article.content.length > 0
+                    ? <div dangerouslySetInnerHTML={{ __html: article.content }}></div>
+                    : <>No content...</>
+            }
         </article>
         <div className="my-5">
             <h3 className="bg-gray-200 text-md px-1">Comment(s)</h3>

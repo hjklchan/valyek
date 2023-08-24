@@ -154,7 +154,7 @@ const Detail = () => {
                                                 <Link to="/" className="mr-2 text-sm text-blue-800">
                                                     [{item.categoryTitle}]
                                                 </Link>
-                                                <Link to="/article/1" className="text-sm">
+                                                <Link to={`/article/${item.id}`} className="text-sm">
                                                     {item.title}
                                                 </Link>
                                             </td>

@@ -54,7 +54,7 @@ export interface Article {
     categoryTitle: string;
     numHeat: number;
     author: string;
-    createdAt: string;
+    createdAt: Date;
 }
 
 export interface ArticleDetail extends Article {

@@ -1,5 +1,5 @@
 import { httpGet, httpPost } from "@/utils/netx/request"
-import { CategoryItem, Section, SectionInfo, Article } from "."
+import { CategoryItem, Section, SectionInfo, Article, ArticleDetail } from "."
 
 const fetchSections = async () => {
     return (await httpGet<Section[]>("http://localhost:8080/api/sections")).data;
@@ -28,6 +28,11 @@ const storeArticle =  async<T>(values: T) => {
     return (await httpPost<{newId: number}>(url, values)).data
 }
 
+const fetchArticleById = async (articleId: string) => {
+    const url = `http://localhost:8080/api/articles/${articleId}`;
+    return (await httpGet<ArticleDetail>(url)).data;
+}
+
 const fetchPopularPosts = () => {
     //
 }
@@ -51,6 +56,7 @@ export {
     fetchCategoryBySectionId,
     fetchArticlesBySectionId,
     fetchArticlesByCategoryId,
+    fetchArticleById,
     storeArticle,
     fetchPostsByCategory,
     fetchPostDetail
