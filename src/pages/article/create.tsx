@@ -23,6 +23,9 @@ type FormValues = {
 }
 
 const Create = () => {
+    // =============================
+    // =========== Hooks ===========
+    // =============================
     useDocumentTitle("Create Article");
     const location = useLocation();
     const navigate = useNavigate();
