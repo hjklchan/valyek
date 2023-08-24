@@ -10,9 +10,9 @@ import {
     Select
 } from "@chakra-ui/react";
 import { Formik, Form, Field, FormikHelpers } from "formik"
-import { fetchSections, storeArticle } from "@/api/blog/blog";
+import { fetchCategoryBySectionId, fetchSections, storeArticle } from "@/api/blog/blog";
 import { useEffect, useState } from "react";
-import { Section } from "@/api/blog/index.d"
+import { CategoryItem, Section } from "@/api/blog/index.d"
 import { createRequire } from "module";
 
 type FormValues = {
@@ -31,6 +31,7 @@ const Create = () => {
     // =============================
     const [loading, setLoading] = useState<boolean>(false);
     const [sections, setSections] = useState<Section[]>([]);
+    const [categories, setCategories] = useState<CategoryItem[]>([]);
     const [content, setContent] = useState<string>("");
 
     const initialValues: FormValues = {
@@ -45,6 +46,11 @@ const Create = () => {
     // =============================
     const getSections = () => {
         fetchSections().then(res => setSections(res.data))
+    }
+    const getCategories = () => {
+        fetchCategoryBySectionId(location.state.sectionId).then(res => {
+            setCategories(res.data);
+        });
     }
     const createArticle = (values: FormValues) => {
         setLoading(true);
@@ -83,6 +89,7 @@ const Create = () => {
 
     useEffect(() => {
         getSections();
+        getCategories();
     }, [])
 
     return <>
@@ -125,10 +132,13 @@ const Create = () => {
                                 <FormLabel>Category</FormLabel>
                                 <Select borderRadius="0" {...field}>
                                     <option value="">Select...</option>
-                                    <option value="1">原创工具</option>
-                                    <option value="2">原创汉化</option>
-                                    <option value="3">Android 工具</option>
-                                    <option value="4">Android 汉化</option>
+                                    {
+                                        categories.map(item => {
+                                            return <option key={item.id} value={item.id}>
+                                                {item.title}({item.numArticle})
+                                            </option>
+                                        })
+                                    }
                                 </Select>
                                 <FormErrorMessage>{form.errors.categoryId}</FormErrorMessage>
                             </FormControl>
