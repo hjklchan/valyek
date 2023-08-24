@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { fetchArticleById } from "@/api/blog/blog";
 import { useParams } from "react-router-dom";
 import { ArticleDetail } from "@/api/blog";
-import { argv0 } from "process";
+import { datefmtCheckNull } from "@/utils/datefmt";
 
 const Detail = () => {
     const { articleId } = useParams();
@@ -40,10 +40,7 @@ const Detail = () => {
     // =======================
     // ======= Handles =======
     // =======================
-    const handleDatetime = (date: Date): string => {
-        const dt = new Date(date);
-        return dt.toUTCString()
-    }
+    // Do something here...
 
     useEffect(() => {
         getArticle();
@@ -54,7 +51,7 @@ const Detail = () => {
         <h1 className="text-2xl font-bold">{article.title}</h1>
         <div className="space-x-3 my-1">
             <span className="text-sm text-gray-500">By <b>{article.author}</b></span>
-            <span className="text-sm text-gray-500">{handleDatetime(article.createdAt)}</span>
+            <span className="text-sm text-gray-500">{datefmtCheckNull(article.createdAt)}</span>
         </div>
         {/** Article Main Content **/}
         <article className="prose max-w-none min-h-50 hover:prose-a:text-blue-500 prose-neutral p-1">

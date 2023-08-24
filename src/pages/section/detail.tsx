@@ -5,6 +5,7 @@ import { ArrowLeftIcon, ArrowRightIcon, PlusIcon } from "@heroicons/react/20/sol
 import { fetchArticlesBySectionId, fetchArticlesByCategoryId, fetchCategoryBySectionId, fetchSection } from "@/api/blog/blog"
 import { Article, CategoryItem, SectionInfo } from "@/api/blog";
 import { hasToken } from "@/utils/tokenx";
+import { datefmtCheckNull } from "@/utils/datefmt"
 
 const Detail = () => {
     const toast = useToast();
@@ -162,7 +163,7 @@ const Detail = () => {
                                             <td className="w-1/12 text-sm">&nbsp;🔥{item.numHeat}</td>
                                             <td className="w-1/12 text-xs">
                                                 <Link to="">{item.author}</Link><br />
-                                                <span className="text-gray-600">{handleDatetime(item.createdAt)}</span>
+                                                <span className="text-gray-600">{datefmtCheckNull(item.createdAt)}</span>
                                             </td>
                                         </tr>
                                     })
