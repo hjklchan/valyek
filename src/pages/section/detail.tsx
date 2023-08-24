@@ -76,6 +76,15 @@ const Detail = () => {
         });
     }
 
+    // ==============================
+    // ========== Handles ===========
+    // ==============================
+    const handleDatetime = (date: Date): string => {
+        const dt = new Date(date);
+        return dt.toUTCString()
+    }
+
+
     useEffect(() => {
         getSection();
         getCategories();
@@ -153,7 +162,7 @@ const Detail = () => {
                                             <td className="w-1/12 text-sm">&nbsp;🔥{item.numHeat}</td>
                                             <td className="w-1/12 text-xs">
                                                 <Link to="">{item.author}</Link><br />
-                                                <span className="text-gray-600">{item.createdAt.toUTCString()}</span>
+                                                <span className="text-gray-600">{handleDatetime(item.createdAt)}</span>
                                             </td>
                                         </tr>
                                     })
