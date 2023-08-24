@@ -5,13 +5,6 @@ import { ArrowLeftIcon, ArrowRightIcon, PlusIcon } from "@heroicons/react/20/sol
 import { fetchArticlesBySectionId, fetchArticlesByCategoryId, fetchCategoryBySectionId, fetchSection } from "@/api/blog/blog"
 import { Article, CategoryItem, SectionInfo } from "@/api/blog";
 import { hasToken } from "@/utils/tokenx";
-import { duration } from "moment";
-
-interface Category {
-    id: number;
-    title: string;
-    numArticle: number;
-}
 
 const Detail = () => {
     const toast = useToast();
@@ -21,7 +14,6 @@ const Detail = () => {
     // ================================
     // ============ States ============
     // ================================
-    const [categoryId, setCategoryId] = useState<string | null>(null);
     const [categories, setCategories] = useState<CategoryItem[]>([]);
     const [articles, setArticles] = useState<Article[]>([]);
     const [sectionInfo, setSectionInfo] = useState<SectionInfo>({
@@ -161,7 +153,7 @@ const Detail = () => {
                                             <td className="w-1/12 text-sm">&nbsp;🔥{item.numHeat}</td>
                                             <td className="w-1/12 text-xs">
                                                 <Link to="">{item.author}</Link><br />
-                                                <span className="text-gray-600">{item.createdAt}</span>
+                                                <span className="text-gray-600">{item.createdAt.toUTCString()}</span>
                                             </td>
                                         </tr>
                                     })
