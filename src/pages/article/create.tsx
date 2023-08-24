@@ -1,5 +1,5 @@
 import ReactEditor from "@/components/ReactEditor";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useDocumentTitle } from "@/hooks/useDocumentTitle";
 import {
     Button,
@@ -25,6 +25,7 @@ type FormValues = {
 const Create = () => {
     useDocumentTitle("Create Article");
     const location = useLocation();
+    const navigate = useNavigate();
 
     // =============================
     // =========== APIs ============
@@ -54,8 +55,9 @@ const Create = () => {
     }
     const createArticle = (values: FormValues) => {
         setLoading(true);
-        storeArticle<FormValues>(values).then(() => {
+        storeArticle<FormValues>(values).then((res) => {
             setLoading(false);
+            goDetailPage(res.data.newId);
         }).catch((error) => {
             setLoading(false);
         })
@@ -85,6 +87,9 @@ const Create = () => {
     const onSubmit = (values: FormValues, actions: FormikHelpers<FormValues>) => {
         values.content = content;
         createArticle(values)
+    }
+    const goDetailPage = (articleId: number) => {
+        navigate(`/article/${articleId}`);
     }
 
     useEffect(() => {

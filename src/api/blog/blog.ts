@@ -25,7 +25,7 @@ const fetchArticlesBySectionId = async (sectionId: any) => {
 
 const storeArticle =  async<T>(values: T) => {
     const url = "http://localhost:8080/api/articles"
-    return (await httpPost<any>(url, values)).data
+    return (await httpPost<{newId: number}>(url, values)).data
 }
 
 const fetchPopularPosts = () => {
