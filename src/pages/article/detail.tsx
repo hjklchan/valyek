@@ -19,7 +19,7 @@ const Detail = () => {
         numHeat: 0,
         author: "",
         content: "",
-        createdAt: null
+        createdAt: new Date("0000-00-00 00:00:00"),
     })
 
     // ======================
@@ -50,15 +50,14 @@ const Detail = () => {
     }, [])
 
     return <>
+        {/** Article Title **/}
+        <h1 className="text-2xl font-bold">{article.title}</h1>
         <div className="space-x-3 my-1">
             <span className="text-sm text-gray-500">By <b>{article.author}</b></span>
             <span className="text-sm text-gray-500">{handleDatetime(article.createdAt)}</span>
         </div>
-        {/** Article Title **/}
-        <h1 className="text-2xl font-bold">{article.title}</h1>
-        <br />
         {/** Article Main Content **/}
-        <article className="prose prose max-w-none min-h-50 hover:prose-a:text-blue-500 prose-neutral">
+        <article className="prose max-w-none min-h-50 hover:prose-a:text-blue-500 prose-neutral p-1">
             {
                 article.content.length > 0
                     ? <div dangerouslySetInnerHTML={{ __html: article.content }}></div>
