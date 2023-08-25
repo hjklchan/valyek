@@ -7,6 +7,11 @@ import { Article, CategoryItem, SectionInfo } from "@/api/blog";
 import { hasToken } from "@/utils/tokenx";
 import { datefmtCheckNull } from "@/utils/datefmt"
 
+enum articleType {
+    HOT = "hot",
+    LATEST = "latest",
+}
+
 const Detail = () => {
     const toast = useToast();
     const { sectionId } = useParams();
@@ -76,15 +81,18 @@ const Detail = () => {
             setArticles(res.data);
         });
     }
+    const onTypeChange = (type: string) => {
+        fetchArticlesByCategoryId(type).then(res => {
+            setArticles(res.data);
+        }).catch(error => {
+            console.log(error)
+        })
+    }
 
     // ==============================
     // ========== Handles ===========
     // ==============================
-    const handleDatetime = (date: Date): string => {
-        const dt = new Date(date);
-        return dt.toUTCString()
-    }
-
+    // Do something here...
 
     useEffect(() => {
         getSection();
@@ -141,8 +149,8 @@ const Detail = () => {
             <div className="mt-2">
                 {/** Show Menu **/}
                 <div className="bg-gray-100 p-1 space-x-2 text-xs mb-1">
-                    <span className="cursor-pointer">最新</span>
-                    <span className="cursor-pointer">热门</span>
+                    <span className="cursor-pointer" onClick={() => onTypeChange(articleType.LATEST)}>最新</span>
+                    <span className="cursor-pointer" onClick={() => onTypeChange(articleType.HOT)}>热门</span>
                     <span className="cursor-pointer">精华</span>
                 </div>
                 {

@@ -33,6 +33,14 @@ const fetchArticleById = async (articleId: string) => {
     return (await httpGet<ArticleDetail>(url)).data;
 }
 
+const fetchArticlesByType = async(type?: string) => {
+    const url = `http://localhost:8080/api/articles`
+    if (type) {
+        url + `?${type}`
+    }
+    return (await httpGet<Article[]>(url)).data;
+}
+
 const fetchPopularPosts = () => {
     //
 }
