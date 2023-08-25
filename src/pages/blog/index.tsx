@@ -1,10 +1,14 @@
 import { useEffect, useState } from "react";
-import { fetchSections } from "@/api/blog/blog";
+import { fetchSections, storeSection } from "@/api/blog/blog";
 import { Link } from "react-router-dom";
 import { Section } from "@/api/blog/index.d";
+import { Button, useDisclosure } from "@chakra-ui/react";
+import CreateSection, { FormProps, FormValues } from "@/components/CreateSection";
 
 const Blog = () => {
     const [sections, setSections] = useState<Section[] | null>(null);
+    const { isOpen, onClose, onOpen } = useDisclosure();
+
     const fakeArticles: { id: number; category: string; title: string }[] = [
         { id: 1, category: "PHP", title: "PHP is a best language in the world" },
         { id: 2, category: "React", title: "Can you hear my heart beating?" },
@@ -17,11 +21,22 @@ const Blog = () => {
         { id: 10, category: "Go", title: "找出指定100个50位数之和的前十位数字" },
         { id: 11, category: "Go", title: "找出指定100个50位数之和的前十位数字" },
     ];
+
+    // ==============================
+    // ============ APIs ============
+    // ==============================
     const getSectionsApi = () => {
         fetchSections().then((value) => {
             setSections(value.data);
         });
     };
+
+    // ==============================
+    // =========== Events ===========
+    // ==============================
+    const createSection = (values: FormValues) => {
+        storeSection(values).then(res => console.log(res.data)).catch(error => console.log(error))
+    }
 
     useEffect(() => {
         getSectionsApi();
@@ -102,6 +117,13 @@ const Blog = () => {
                 <h2 className="p-1 text-sm bg-gray-200">Photos</h2>
                 <div className="p-1 text-sm h-32">Put photos here....</div>
             </div>
+            {/** 区块创建暂时放此处 **/}
+            <Button
+                size="xs"
+                borderRadius="0"
+                variant="outline"
+                onClick={onOpen}
+            >创建区块</Button>
             <div className="border">
                 <h2 className="p-1 text-sm bg-gray-200">综合区块</h2>
                 <table className="table-fixed w-full border-separate border-spacing-y-2">
@@ -142,6 +164,7 @@ const Blog = () => {
                     </tbody>
                 </table>
             </div>
+            <CreateSection isOpen={isOpen} onClose={onClose} onOk={(values) => createSection(values)} />
         </div>
     );
 };

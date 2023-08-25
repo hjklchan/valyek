@@ -1,39 +1,39 @@
 import { httpGet, httpPost } from "@/utils/netx/request"
-import { CategoryItem, Section, SectionInfo, Article, ArticleDetail } from "."
+import { CategoryItem, Section, SectionInfo, Article, ArticleDetail, CreateSectionParameters } from "."
 
-const fetchSections = async () => {
+export const fetchSections = async () => {
     return (await httpGet<Section[]>("http://localhost:8080/api/sections")).data;
 }
 
-const fetchSection = async (sectionId: number | string | any) => {
+export const fetchSection = async (sectionId: number | string | any) => {
     return (await httpGet<SectionInfo>("http://localhost:8080/api/sections/" + sectionId)).data
 }
 
-const fetchCategoryBySectionId = async (sectionId: any) => {
+export const fetchCategoryBySectionId = async (sectionId: any) => {
     return (await httpGet<CategoryItem[]>(`http://localhost:8080/api/categories/${sectionId}/section`)).data
 }
 
-const fetchArticlesByCategoryId = async (categoryId: string) => {
+export const fetchArticlesByCategoryId = async (categoryId: string) => {
     let url = `http://localhost:8080/api/articles/${categoryId}/category`
     return (await httpGet<Article[]>(url)).data
 }
 
-const fetchArticlesBySectionId = async (sectionId: any) => {
+export const fetchArticlesBySectionId = async (sectionId: any) => {
     const url = `http://localhost:8080/api/articles/${sectionId}/section`;
     return (await httpGet<Article[]>(url)).data;
 }
 
-const storeArticle = async<T>(values: T) => {
+export const storeArticle = async<T>(values: T) => {
     const url = "http://localhost:8080/api/articles"
     return (await httpPost<{ newId: number }>(url, values)).data
 }
 
-const fetchArticleById = async (articleId: string) => {
+export const fetchArticleById = async (articleId: string) => {
     const url = `http://localhost:8080/api/articles/${articleId}`;
     return (await httpGet<ArticleDetail>(url)).data;
 }
 
-const fetchArticlesByType = async(type?: string) => {
+export const fetchArticlesByType = async(type?: string) => {
     const url = `http://localhost:8080/api/articles`
     if (type) {
         url + `?${type}`
@@ -41,31 +41,23 @@ const fetchArticlesByType = async(type?: string) => {
     return (await httpGet<Article[]>(url)).data;
 }
 
-const fetchPopularPosts = () => {
+export const storeSection = async(values: CreateSectionParameters) => {
+    const url = `http://localhost:8080/api/sections`;
+    return (await (httpPost(url, values))).data;
+}
+
+export const fetchPopularPosts = () => {
     //
 }
 
-const fetchCategories = (sectionId: number | string | null) => {
+export const fetchCategories = (sectionId: number | string | null) => {
 }
 
-const fetchPostsByCategory = () => {
+export const fetchPostsByCategory = () => {
     //
 }
 
-const fetchPostDetail = () => {
+export const fetchPostDetail = () => {
     //
 }
 
-export {
-    fetchSection,
-    fetchSections,
-    fetchPopularPosts,
-    fetchCategories,
-    fetchCategoryBySectionId,
-    fetchArticlesBySectionId,
-    fetchArticlesByCategoryId,
-    fetchArticleById,
-    storeArticle,
-    fetchPostsByCategory,
-    fetchPostDetail
-};

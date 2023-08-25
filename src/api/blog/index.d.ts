@@ -33,6 +33,12 @@ export type SectionInfo = {
     categories: null
 }
 
+export interface CreateSectionParameters {
+    title: string;
+    description: string;
+    maintainers: string;
+}
+
 export interface CategoryItem {
     id: number;
     title: string;
