@@ -23,9 +23,9 @@ const fetchArticlesBySectionId = async (sectionId: any) => {
     return (await httpGet<Article[]>(url)).data;
 }
 
-const storeArticle =  async<T>(values: T) => {
+const storeArticle = async<T>(values: T) => {
     const url = "http://localhost:8080/api/articles"
-    return (await httpPost<{newId: number}>(url, values)).data
+    return (await httpPost<{ newId: number }>(url, values)).data
 }
 
 const fetchArticleById = async (articleId: string) => {

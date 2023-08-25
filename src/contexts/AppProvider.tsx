@@ -19,7 +19,7 @@ export const AppContext = React.createContext<AppType>(initialData);
 export const AppProvider = ({ children }: { children: React.ReactNode }) => {
     const [gloading, setGloading] = React.useState<boolean>(false);
     const toggleGloading = (gloading: boolean): void => {
-        setGloading(!gloading);
+        setGloading(gloading);
     }
     const value = {
         gloading,

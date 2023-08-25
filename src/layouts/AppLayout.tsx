@@ -5,8 +5,11 @@ import Header from "./components/Header";
 import Content from "./components/Content";
 import Footer from "./components/Footer";
 import moment from "moment";
+import { useApp } from "@/contexts/AppProvider";
+import { Spinner } from "@chakra-ui/react";
 
 const AppLayout = () => {
+    const {gloading} = useApp();
     const [timePeriod, setTimePeriod] = useState<string>("")
     const initialTimePeriod = () => {
         // TODO This initial action need to be wrapped separately
@@ -36,6 +39,7 @@ const AppLayout = () => {
         <div className="flex justify-between px-2 mt-2 flex text-xs">
             <div className="flex">
                 <div className="lg:text-md mr-3 text-gray-400">{timePeriod}</div>
+                <div className="">{gloading ? <Spinner size="xs" color="green.500" /> : ""}</div>
                 {/*<div className="lg:text-md mr-1">☀</div>
                 <div className="lg:text-md">
                     <span className="text-green-600">29℃</span>
