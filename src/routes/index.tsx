@@ -3,6 +3,8 @@ import { createBrowserRouter, createRoutesFromElements, Navigate, Route, useRout
 import RequireAuth from "@/components/RequireAuth";
 import { Login, Registration, User, Blog, SectionDetail, ArticleCreate, ArticleDetail, Share, NotFound, About } from "@/pages";
 import { AppLayout } from "@/layouts/AppLayout";
+import Home from "@/pages/admin/home";
+import AdminLayout from "@/layouts/AdminLayout";
 
 // Default home path
 export const defaultHomePath = "/blog";
@@ -32,6 +34,12 @@ export const appRouter = createBrowserRouter(
                 <Route path="/user" element={<RequireAuth><User /></RequireAuth>} />
                 <Route path="/about" element={<About />} />
                 <Route path="/*" element={<NotFound />} />
+            </Route>
+            {/** Admin Login **/}
+            <Route path="/admin/login" element={<>Login</>} />
+            {/** Admin **/}
+            <Route path="/admin" element={<AdminLayout />}>
+                <Route path="index" element={<Home />} />
             </Route>
             {/* Not found page */}
             <Route path="/*" element={<>Page Not Found</>} />
