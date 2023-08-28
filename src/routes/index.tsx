@@ -5,6 +5,7 @@ import { Login, Registration, User, Blog, SectionDetail, ArticleCreate, ArticleD
 import { AppLayout } from "@/layouts/AppLayout";
 import Home from "@/pages/admin/home";
 import AdminLayout from "@/layouts/AdminLayout";
+import Collection from "@/pages/collection";
 
 // Default home path
 export const defaultHomePath = "/blog";
@@ -32,6 +33,9 @@ export const appRouter = createBrowserRouter(
                 <Route path="/share" element={<Share />} />
                 {/* Profile page */}
                 <Route path="/user" element={<RequireAuth><User /></RequireAuth>} />
+                {/* Collection */}
+                <Route path="/collection" element={<Collection />} />
+                {/* About page */}
                 <Route path="/about" element={<About />} />
                 <Route path="/*" element={<NotFound />} />
             </Route>

@@ -26,6 +26,7 @@ const Header = () => {
     const menu: Menu[] = [
         { key: "blog", label: "Blog", to: "/blog" },
         { key: "share", label: "Share", to: "/share" },
+        { key: "collection", label: "Collection", to: "/collection" },
         { key: "about", label: "About", to: "/about" },
     ];
     const userMenu: Menu[] = [

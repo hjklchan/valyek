@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { MegaphoneIcon } from "@heroicons/react/20/solid";
 import { Navigate, Outlet } from "react-router-dom";
+import HelperWindow from "@/components/HelperWindow";
 import Header from "./components/Header";
 import Content from "./components/Content";
 import Footer from "./components/Footer";
@@ -9,7 +10,7 @@ import { useApp } from "@/contexts/AppProvider";
 import { Spinner } from "@chakra-ui/react";
 
 const AppLayout = () => {
-    const {gloading} = useApp();
+    const { gloading } = useApp();
     const [timePeriod, setTimePeriod] = useState<string>("")
     const initialTimePeriod = () => {
         // TODO This initial action need to be wrapped separately
