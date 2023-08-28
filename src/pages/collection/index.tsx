@@ -2,7 +2,7 @@ import React from "react";
 
 const Collection = () => {
     return <React.Fragment>
-        
+        hello
     </React.Fragment>
 }
 
